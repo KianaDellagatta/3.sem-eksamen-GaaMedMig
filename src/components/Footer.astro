@@ -1,7 +1,43 @@
 ---
+const {
+  logoSrc = "/Logo.svg",
+  logoAlt = "Gå med mig",
+  cvrText = "Gå Med Mig er en non-profit virksomhed med samfundsnyttigt formål. CVR: 56736453",
+} = Astro.props;
+
+const socials = [
+  { label: "Instagram", href: "https://instagram.com", icon: "/icons/instagram.svg" },
+  { label: "Facebook", href: "https://facebook.com", icon: "/icons/facebook.svg" },
+  { label: "Email", href: "mailto:info@gaamedmig.dk", icon: "/icons/mail.svg" },
+];
 ---
-<footer class="bg-primary-500 text-white">
-    <div class="container mx-auto p-4">
-        <p>&copy; 2025</p>
+
+<footer class="container-site" aria-label="Footer">
+  <div class="footer-pill">
+    <div class="footer-grid">
+      <!-- Logo -->
+      <a href="/" class="footer-logo glow-link" aria-label="Gå til forsiden">
+        <img src={logoSrc} alt={logoAlt} class="w-full h-full object-contain" />
+      </a>
+
+      <!-- Social icons -->
+      <div class="footer-icons" aria-label="Sociale links">
+        {socials.map((s) => (
+          <a
+            class="footer-icon-link glow-link"
+            href={s.href}
+            aria-label={s.label}
+          >
+            <img src={s.icon} alt="" class="w-10 h-10 object-contain" />
+          </a>
+        ))}
+      </div>
+
+      <!-- Policies -->
+      <a href="/policies" class="footer-link glow-link">Policies</a>
     </div>
+
+    <!-- CVR / legal text -->
+    <p class="footer-meta">{cvrText}</p>
+  </div>
 </footer>

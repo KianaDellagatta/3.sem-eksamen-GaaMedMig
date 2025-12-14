@@ -1,50 +1,599 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@plugin '@tailwindcss/typography';
-@plugin '@tailwindcss/forms';
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
 @import "tailwindcss-animated";
 @import "tailwindcss-intersect";
 
+/* -------------------------------- */
+/* FONTS */
+/* Put the font files in /public/fonts */
+/* -------------------------------- */
+
 @font-face {
-  font-family: 'Honk';
-  src: url('/fonts/Honk-Regular-VariableFont_MORF,SHLN.ttf') format('truetype');
+  font-family: "Rubik";
+  src: url("/fonts/Rubik-VariableFont_wght.ttf") format("truetype");
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Quicksand';
-  src: url('/fonts/Quicksand-VariableFont_wght.ttf') format('truetype');
+  font-family: "DM Sans";
+  src: url("/fonts/DMSans-VariableFont_opsz,wght.ttf") format("truetype");
+  font-style: normal;
+  font-display: swap;
 }
 
-@font-face {
-  font-family: 'Domine';
-  src: url('/fonts/Domine-Regular.ttf') format('truetype');
-}
+/* -------------------------------- */
+/* DESIGN TOKENS */
+/* -------------------------------- */
 
 @theme {
-  /* Her tilføjes theme variable // tokens */
+  /* Fonts */
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Rubik", ui-sans-serif, system-ui, sans-serif;
 
-  /*Farver */
-  --color-primary-400: #00E4F5;
-  --color-primary-500: #006269;
-  --color-primary-600: #006D75;
-  --color-secondary-400: #F5E400;
-  --color-secondary-500: #F5A600;
-  --color-secondary-600: #F57A00;
+  /* Weights used */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
 
-  /*Typografi */
-  --font-display: 'Honk', monospace;
-  --font-sans: 'Quicksand', sans-serif;
-  --font-serif: 'Domine', serif;
+  /* Figma line-height shows 150 */
+  --leading-base: 1.5;
+
+  /* Layout grid */
+  --grid-cols-mobile: 6;
+  --grid-cols-desktop: 12;
+  --space-container-desktop: 150px;
+  --space-gutter: 20px;
+
+  /* Spacing */
+  --space-section-mobile: 48px;
+  --space-section-desktop: 80px;
+
+  --card-padding: 16px;
+
+  /* Radius tokens */
+  --radius-1: 10px;
+  --radius-2: 20px; /* cards */
+  --radius-3: 30px;
+  --radius-4: 100px; /* buttons */
+
+  --radius-card: var(--radius-2);
+  --radius-btn: var(--radius-4);
+
+  /* Background */
+  --color-bg: #ffebdb;
+
+  /* Neutrals */
+  --color-black: #1c1c1c; /* sort */
+  --color-white: #fffefc; /* hvid */
+
+  /* Pink */
+  --pink-400: #ff58b0;
+  --pink-500: #ed0098;
+  --pink-600: #bf007b;
+  --pink-700: #90005b;
+
+  /* Beigepink */
+  --beigepink-50: #ffecf1;
+  --beigepink-200: #ffb2c4;
+  --beigepink-400: #ff4a8c;
+  --beigepink-500: #e80273;
+  --beigepink-600: #ba015c;
+  --beigepink-700: #8e0144;
+
+  /* Blue */
+  --blue-300: #a0bcfd;
+
+  /* Orange */
+  --orange-400: #ff7f00;
+
+  /* Semantic aliases */
+  --color-text: var(--color-black);
+  --color-surface: var(--color-white);
+
+  /* Border (cards with stroke) */
+
+  /* Readability */
+  --max-prose: 60ch;
+
+  /* Decorative layering */
+  --z-decor: 0;
+  --z-content: 1;
+
+  /* Icon buttons (phone/chat circles) */
+  --icon-btn-size: 44px;
+
+  /* Button typography (Rubik Medium 24) */
+  --text-btn: 24px;
+  --font-btn: var(--font-display);
+  --font-weight-btn: var(--font-weight-medium);
+
+  /* Button text color */
+  --btn-text: var(--color-white);
+
+  /* Button shadow */
+  --shadow-btn: 0 6px 20px rgba(0, 0, 0, 0.18);
+  --shadow-btn-hover: 0 8px 26px rgba(0, 0, 0, 0.22);
+
+  /* Typography sizes (Desktop) */
+  --text-h1-desktop: 48px;
+  --text-h2-desktop: 40px;
+  --text-hero-desktop: 36px;
+  --text-p1-desktop: 30px;
+
+  /* Typography sizes (Mobile) */
+  --text-h1-mobile: 32px;
+  --text-h2-mobile: 30px;
+  --text-hero-mobile: 30px;
+  --text-p-mobile: 20px;
+
+  /* -------------------------------- */
+  /* GRADIENTS */
+  /* -------------------------------- */
+  --gradient-pink-orange: linear-gradient(
+    90deg,
+    var(--pink-400) 0%,
+    var(--orange-400) 100%
+  );
+
+  --gradient-orange-beigepink: linear-gradient(
+    90deg,
+    var(--orange-400) 0%,
+    var(--beigepink-200) 100%
+  );
+
+  --gradient-blue-pink: linear-gradient(
+    90deg,
+    var(--blue-300) 0%,
+    var(--pink-400) 100%
+  );
+
+  /* Header + Footer use SAME gradient */
+  --gradient-header: var(--gradient-pink-orange);
+  --gradient-footer: var(--gradient-pink-orange);
+
+  /* -------------------------------- */
+  /* BUTTON GRADIENT HOVER FILLS */
+  /* On hover: gradient -> solid fill (token-based) */
+  /* Adjust these if your Figma specifies different solids */
+  /* -------------------------------- */
+  --btn-grad-1-hover: var(--pink-500); /* for pink->orange button */
+  --btn-grad-2-hover: var(--beigepink-500); /* for orange->beigepink button */
+  --btn-grad-3-hover: var(--pink-500); /* for blue->pink button */
 }
+
+/* -------------------------------- */
+/* BASE */
+/* -------------------------------- */
 
 @layer base {
-
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    line-height: var(--leading-base);
+  }
 }
 
-@layer components{
+/* -------------------------------- */
+/* COMPONENT HELPERS (reused) */
+/* -------------------------------- */
 
+@layer components {
+  /* Container */
+  .container-site {
+    margin-inline: auto;
+    max-width: 1400px;
+    padding-inline: 24px; /* mobile */
+  }
+
+  @media (min-width: 1024px) {
+    .container-site {
+      padding-inline: var(--space-container-desktop);
+    }
+  }
+
+  /* Grid: 6 cols mobile -> 12 cols desktop */
+  .grid-site {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-cols-mobile), minmax(0, 1fr));
+    gap: var(--space-gutter);
+  }
+
+  @media (min-width: 1024px) {
+    .grid-site {
+      grid-template-columns: repeat(var(--grid-cols-desktop), minmax(0, 1fr));
+    }
+  }
+
+  /* Section spacing */
+  .section {
+    padding-block: var(--space-section-mobile);
+  }
+
+  @media (min-width: 1024px) {
+    .section {
+      padding-block: var(--space-section-desktop);
+    }
+  }
+
+  /* Card (no shadow) */
+  .card {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-card);
+    padding: var(--card-padding);
+  }
+
+  .card-bordered {
+    border: var(--border-card) solid var(--color-border);
+  }
+
+  /* ------------------------------- */
+  /* SHARED GLOW HOVER (header + footer) */
+  /* ------------------------------- */
+
+  .glow-link {
+    transition: filter 220ms ease, transform 120ms ease;
+  }
+
+  .glow-link:hover {
+    filter: drop-shadow(0 0 12px var(--color-white));
+    transform: translateY(-1px);
+  }
+
+  .glow-link[aria-current="page"] {
+    filter: drop-shadow(0 0 14px var(--color-white));
+  }
+
+  /* ------------------------------- */
+  /* NAV / HEADER */
+  /* ------------------------------- */
+
+  .nav-pill {
+    background: var(--gradient-header);
+    border-radius: var(--radius-3);
+    box-shadow: var(--shadow-btn);
+    min-height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-inline: 32px;
+  }
+
+  .nav-logo {
+    width: 76px;
+    height: 76px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+
+  .nav-link {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--text-hero-mobile);
+    line-height: var(--leading-base);
+    color: var(--color-white);
+    text-decoration: none;
+  }
+
+  .nav-burger {
+    width: var(--icon-btn-size);
+    height: var(--icon-btn-size);
+    border-radius: 9999px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border: 0;
+    padding: 0;
+
+    cursor: pointer;
+  }
+
+  .nav-burger svg {
+    color: var(--color-white);
+  }
+
+  .nav-menu {
+    margin-top: 12px;
+    border-radius: var(--radius-card);
+    background: var(--gradient-header);
+    border: var(--border-card) solid var(--color-border);
+    padding: 16px;
+  }
+
+  /* ------------------------------- */
+  /* FOOTER */
+  /* ------------------------------- */
+
+  .footer-pill {
+    background: var(--gradient-footer);
+    border-radius: var(--radius-3);
+    box-shadow: var(--shadow-btn);
+    padding: 28px 32px;
+  }
+
+  /* Mobile: stacked + centered */
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 18px;
+  }
+
+  /* Desktop: logo | icons | policies */
+  @media (min-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      justify-items: stretch;
+      row-gap: 0;
+      column-gap: 24px;
+    }
+  }
+
+  .footer-logo {
+    width: 90px;
+    height: 90px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+
+  /* Icons */
+  .footer-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .footer-icon-link {
+    width: 64px;
+    height: 64px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    text-decoration: none;
+  }
+
+  /* Policies link */
+  .footer-link {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-regular);
+    font-size: 18px;
+    line-height: var(--leading-base);
+    color: var(--color-white);
+    text-decoration: underline;
+    text-underline-offset: 6px;
+  }
+
+  /* Desktop sizing */
+  @media (min-width: 1024px) {
+    .footer-logo {
+      width: 76px;
+      height: 76px;
+    }
+
+    .footer-icon-link {
+      width: 44px;
+      height: 44px;
+    }
+
+    .footer-link {
+      justify-self: end;
+      align-self: center;
+    }
+  }
+
+  /* Small text */
+  .footer-meta {
+    margin-top: 14px;
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-regular);
+    font-size: 12px;
+    line-height: var(--leading-base);
+    color: var(--color-white);
+    text-align: center;
+  }
+
+  /* ------------------------------- */
+  /* BUTTONS */
+  /* ------------------------------- */
+
+  .btn-base {
+    font-family: var(--font-btn);
+    font-weight: var(--font-weight-btn);
+    font-size: var(--text-btn);
+    line-height: var(--leading-base);
+
+    border-radius: var(--radius-btn);
+    padding: 12px 20px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    text-decoration: none;
+    user-select: none;
+    white-space: nowrap;
+    cursor: pointer;
+
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    /* shadow only on buttons */
+    box-shadow: var(--shadow-btn);
+
+    transition: transform 120ms ease, box-shadow 200ms ease;
+  }
+
+  .btn-base:hover {
+    box-shadow: var(--shadow-btn-hover);
+  }
+
+  .btn-base:active {
+    transform: scale(0.98);
+    box-shadow: var(--shadow-btn);
+  }
+
+  /* Variants: set text color and use layered backgrounds */
+  .btn-grad-1,
+  .btn-grad-2,
+  .btn-grad-3 {
+    color: var(--btn-text);
+    background: none; /* handled by pseudo elements */
+  }
+
+  /* Two background layers: ::before = gradient, ::after = solid hover */
+  .btn-grad-1::before,
+  .btn-grad-2::before,
+  .btn-grad-3::before,
+  .btn-grad-1::after,
+  .btn-grad-2::after,
+  .btn-grad-3::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transition: opacity 320ms ease;
+  }
+
+  /* Default: show gradient */
+  .btn-grad-1::before {
+    background: var(--gradient-pink-orange);
+    opacity: 1;
+  }
+  .btn-grad-2::before {
+    background: var(--gradient-orange-beigepink);
+    opacity: 1;
+  }
+  .btn-grad-3::before {
+    background: var(--gradient-blue-pink);
+    opacity: 1;
+  }
+
+  /* Default: hide solid */
+  .btn-grad-1::after {
+    background-color: var(--btn-grad-1-hover);
+    opacity: 0;
+  }
+  .btn-grad-2::after {
+    background-color: var(--btn-grad-2-hover);
+    opacity: 0;
+  }
+  .btn-grad-3::after {
+    background-color: var(--btn-grad-3-hover);
+    opacity: 0;
+  }
+
+  /* Hover: fade gradient out, solid in */
+  .btn-grad-1:hover::before,
+  .btn-grad-2:hover::before,
+  .btn-grad-3:hover::before {
+    opacity: 0;
+  }
+
+  .btn-grad-1:hover::after,
+  .btn-grad-2:hover::after,
+  .btn-grad-3:hover::after {
+    opacity: 1;
+  }
 }
 
-@layer utilities{
-  
+/* -------------------------------- */
+/* UTILITIES (named + skimmable) */
+/* -------------------------------- */
+
+@layer utilities {
+  /* Typography */
+  .t-h1 {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--text-h1-mobile);
+    line-height: var(--leading-base);
+  }
+  @media (min-width: 1024px) {
+    .t-h1 {
+      font-size: var(--text-h1-desktop);
+    }
+  }
+
+  .t-h2 {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--text-h2-mobile);
+    line-height: var(--leading-base);
+  }
+  @media (min-width: 1024px) {
+    .t-h2 {
+      font-size: var(--text-h2-desktop);
+    }
+  }
+
+  .t-hero {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--text-hero-mobile);
+    line-height: var(--leading-base);
+  }
+  @media (min-width: 1024px) {
+    .t-hero {
+      font-size: var(--text-hero-desktop);
+    }
+  }
+
+  .t-p {
+    font-weight: var(--font-weight-regular);
+    font-size: var(--text-p-mobile);
+    line-height: var(--leading-base);
+  }
+  @media (min-width: 1024px) {
+    .t-p {
+      font-size: var(--text-p1-desktop);
+    }
+  }
+
+  /* Readability */
+  .prose-max {
+    max-width: var(--max-prose);
+  }
+
+  /* Gradient role utilities */
+  .bg-gradient-header {
+    background: var(--gradient-header);
+  }
+
+  .bg-gradient-footer {
+    background: var(--gradient-footer);
+  }
+
+  /* Layer helpers */
+  .z-decor {
+    z-index: var(--z-decor);
+  }
+
+  .z-content {
+    z-index: var(--z-content);
+  }
+
+  /* Icon circle button (combine with .btn-grad-*) */
+  .icon-btn {
+    width: var(--icon-btn-size);
+    height: var(--icon-btn-size);
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
