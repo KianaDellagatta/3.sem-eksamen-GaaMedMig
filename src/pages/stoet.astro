@@ -1,9 +1,55 @@
 ---
+import DonationCard from "../components/DonationCard.astro";
 import MainLayout from "../layouts/MainLayout.astro";
-
 ---
-<MainLayout title="Titel">
-	<main>
-		
-	</main>
+<MainLayout title="Støt">
+  <main>
+    <section class="section">
+      <div class="container-site grid-site">
+        <div class="col-span-6 lg:col-span-7 flex flex-col justify-center">
+          <div>
+            <h1 class="title t-h1">Støt os</h1>
+            <p class="t-p">
+              Når du donerer, er du med til at gøre en forskel her og nu.
+              Din støtte går direkte til hotlinen og vores arbejde for tryghed, nærvær og fællesskab.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-span-3 lg:col-span-5 flex flex-col justify-between">
+          <img src="/star6.svg" alt="stjerne" class="self-start w-20 md:w-36 pointer-events-none" />
+          <img src="/star3.svg" alt="stjerne" class="self-end w-32 md:w-48 pointer-events-none" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container-site grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="col-span-1">
+          <!-- Engangsdonation (pink) -->
+          <DonationCard
+            id="one-time"
+            title="Engangsdonation"
+            subtitle="Støt vores arbejde med et valgfrit beløb."
+            accent="pink"
+            amounts={[25,50,100]}
+            flow={['amount','info','method','payment','terms','thankyou']}
+          />
+        </div>
+
+        <div class="col-span-1">
+          <!-- Månedlig støtte (beigepink) -->
+          <DonationCard
+            id="monthly"
+            title="Månedlig støtte"
+            subtitle="Gør en varig forskel — støtte hver måned."
+            accent="beigepink"
+            amounts={[25,50,100]}
+            flow={['amount','info','method','payment','terms','thankyou']}
+            frequency="monthly"
+          />
+        </div>
+      </div>
+    </section>
+  </main>
 </MainLayout>
