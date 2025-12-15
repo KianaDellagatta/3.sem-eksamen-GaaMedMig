@@ -46,6 +46,7 @@
   --grid-cols-desktop: 12;
   --space-container-desktop: 150px;
   --space-gutter: 20px;
+  --grid-cols-cards: 4;
 
   /* Spacing */
   --space-section-mobile: 48px;
@@ -132,23 +133,11 @@
   /* -------------------------------- */
   /* GRADIENTS */
   /* -------------------------------- */
-  --gradient-pink-orange: linear-gradient(
-    90deg,
-    var(--pink-400) 0%,
-    var(--orange-400) 100%
-  );
+  --gradient-pink-orange: linear-gradient(90deg, var(--pink-400) 0%, var(--orange-400) 100%);
 
-  --gradient-orange-beigepink: linear-gradient(
-    90deg,
-    var(--orange-400) 0%,
-    var(--beigepink-200) 100%
-  );
+  --gradient-orange-beigepink: linear-gradient(90deg, var(--orange-400) 0%, var(--beigepink-200) 100%);
 
-  --gradient-blue-pink: linear-gradient(
-    90deg,
-    var(--blue-300) 0%,
-    var(--pink-400) 100%
-  );
+  --gradient-blue-pink: linear-gradient(90deg, var(--blue-300) 0%, var(--pink-400) 100%);
 
   /* Header + Footer use SAME gradient */
   --gradient-header: var(--gradient-pink-orange);
@@ -205,6 +194,12 @@
   @media (min-width: 1024px) {
     .grid-site {
       grid-template-columns: repeat(var(--grid-cols-desktop), minmax(0, 1fr));
+    }
+
+    .grid-desktop-cards {
+      display: grid;
+      grid-template-columns: repeat(var(--grid-cols-cards), minmax(0, 1fr));
+      gap: var(--space-gutter);
     }
   }
 
