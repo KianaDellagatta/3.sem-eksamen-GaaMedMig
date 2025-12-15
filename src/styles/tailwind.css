@@ -162,6 +162,31 @@
   --btn-grad-1-hover: var(--pink-500); /* for pink->orange button */
   --btn-grad-2-hover: var(--beigepink-500); /* for orange->beigepink button */
   --btn-grad-3-hover: var(--pink-500); /* for blue->pink button */
+
+  /* -------------------------------- */
+  /* DONATION TYPOGRAPHY TOKENS */
+  /* -------------------------------- */
+
+  --donation-text-color: var(--color-white);
+
+  /* Desktop sizes from Figma (150% line-height) */
+  --donation-h1: 40px;
+  --donation-h2: 36px;
+  --donation-p: 24px;
+  --donation-form-text: 30px;
+  --donation-form-text-p: 20px;
+
+  /* -------------------------------- */
+  /* IDCARD TYPOGRAPHY TOKENS */
+  /* -------------------------------- */
+
+  /* Desktop sizes from Figma (150% line-height) */
+  --idcard-h1: 28px;
+  --idcard-h2: 24px;
+  --idcard-p: 16px;
+
+  /* Color */
+  --idcard-text-color: var(--color-white);
 }
 
 /* -------------------------------- */
@@ -508,6 +533,78 @@
   .btn-grad-2:hover::after,
   .btn-grad-3:hover::after {
     opacity: 1;
+  }
+
+  /* ------------------------------- */
+  /* DONATION TYPOGRAPHY */
+  /* ------------------------------- */
+
+  .t-donation-h1 {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--donation-h1);
+    line-height: var(--leading-base);
+    color: var(--donation-text-color);
+  }
+
+  .t-donation-h2 {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--donation-h2);
+    line-height: var(--leading-base);
+    color: var(--donation-text-color);
+  }
+
+  .t-donation-p {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--donation-p);
+    line-height: var(--leading-base);
+    color: var(--donation-text-color);
+  }
+
+  .t-donation-form {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--donation-form-text);
+    line-height: var(--leading-base);
+    color: var(--donation-text-color);
+  }
+
+  .t-donation-form-p {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--donation-form-text-p);
+    line-height: var(--leading-base);
+    color: var(--donation-text-color);
+  }
+
+  /* ------------------------------- */
+  /* IDCARD TYPOGRAPHY */
+  /* ------------------------------- */
+
+  .t-idcard-h1 {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--idcard-h1);
+    line-height: var(--leading-base);
+    color: var(--idcard-text-color);
+  }
+
+  .t-idcard-h2 {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--idcard-h2);
+    line-height: var(--leading-base);
+    color: var(--idcard-text-color);
+  }
+
+  .t-idcard-p {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--idcard-p);
+    line-height: var(--leading-base);
+    color: var(--idcard-text-color);
   }
 }
 
