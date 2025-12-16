@@ -1,9 +1,94 @@
 ---
+import DonationCard from "../components/DonationCard.astro";
 import MainLayout from "../layouts/MainLayout.astro";
-
+import { animate } from "motion";
 ---
-<MainLayout title="Titel">
-	<main>
-		
-	</main>
+<MainLayout title="Støt">
+  <main class="relative">
+
+    <!-- GLOBAL BAGGRUND SVG -->
+    <svg
+      id="bg-svg"
+      class="fixed top-0 left-0 w-full pointer-events-none z-0"
+      viewBox="0 0 1728 1255"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M-483.655 1177.23C-287.366 1261.51 132.832 1325.75 243.312 908.46C353.792 491.17 745.235 583.086 927.146 681.205C1140.02 827.135 1595.31 995.801 1713.52 503.024C1831.73 10.2467 1976.54 -16.3947 2034.16 31.8818"
+        stroke="#FC7324"
+        stroke-width="30"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        data-draw="line2"
+      />
+    </svg>
+
+    <!-- Intro-sektion -->
+    <section class="section relative z-10 overflow-hidden">
+      <div class="container-site grid grid-cols-1 lg:grid-cols-2">
+        <div class="flex flex-col justify-center space-y-3">
+          <h1 class="title t-h1">Vil du støtte os?</h1>
+          <p class="t-p">
+            Når du donerer, er du med til at gøre en forskel her og nu.
+            Din støtte går direkte til hotlinen og vores arbejde for tryghed, nærvær og fællesskab.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Donation-sektion -->
+    <section id="not-alone-to-arrive" class="section relative overflow-hidden z-10">
+      <div class="container-site">
+        <div class="grid-site">
+          <div class="col-span-12 lg:col-span-12 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <DonationCard
+                id="one-time"
+                title="Engangsdonation"
+                subtitle="Støt vores arbejde med et valgfrit beløb."
+                accent="pink"
+                amounts={[25,50,100]}
+                flow={['amount','info','method','payment','terms','thankyou']}
+              />
+
+              <DonationCard
+                id="monthly"
+                title="Månedlig støtte"
+                subtitle="Gør en varig forskel — støtte hver måned."
+                accent="beigepink"
+                amounts={[25,50,100]}
+                flow={['amount','info','method','payment','terms','thankyou']}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Punktliste -->
+    <section class="section relative z-10">
+      <div class="container-site grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Samlet tekstboks -->
+        <div>
+          <div class="bg-white rounded-xl shadow-md p-6">
+            <h2 class="title t-h2 mb-4">Når du donerer, hjælper du os med:</h2>
+            <ul class="list-disc list-inside space-y-2 text-gray-800">
+              <li>Drift af telefonlinjen (telefoni, software, sikkerhed)</li>
+              <li>Uddannelse af frivillige</li>
+              <li>Support og supervision</li>
+              <li>Markedsføring og oplysning for at nå ud til flere, der har brug for vores hjælp</li>
+              <li>Rekruttering af frivillige</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Dekorativ stjerne -->
+        <div class="flex justify-end">
+          <img src="/star2.svg" alt="stjerne" class="w-32 md:w-48 pointer-events-none" />
+        </div>
+      </div>
+    </section>
+  </main>
 </MainLayout>
+

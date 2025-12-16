@@ -1,0 +1,51 @@
+---
+const { image, title, name, age } = Astro.props;
+---
+
+<div
+class="card max-w-sm shrink-0"
+style={{
+background: 'var(--pink-400)',
+borderRadius: 'var(--radius-card)',
+padding: 'var(--card-padding)',
+fontFamily: 'var(--font-sans)',
+}}
+>
+<div
+class="w-full"
+style={{
+borderRadius: 'var(--radius-card)',
+}}
+>
+<div
+class="overflow-hidden"
+style={{
+  borderTopLeftRadius: 'var(--radius-card)',
+  borderTopRightRadius: 'var(--radius-card)',
+}}
+>
+<img
+src={image}
+alt={name}
+class="h-60 w-full object-cover"
+loading="lazy"
+/>
+</div>
+
+
+<div class="mt-4" style={{ color: 'var(--color-white)' }}>
+<h3
+class="t-idcard-h1"
+
+>
+{title}
+</h3>
+<p
+class="t-idcard-p"
+style={{ fontWeight: 'var(--font-weight-regular)' }}
+>
+{name}, {age}
+</p>
+</div>
+</div>
+</div>

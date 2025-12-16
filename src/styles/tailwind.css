@@ -46,6 +46,8 @@
   --grid-cols-desktop: 12;
   --space-container-desktop: 150px;
   --space-gutter: 20px;
+  --grid-cols-cards: 4;
+  --grid-cols-text: 2;
 
   /* Spacing */
   --space-section-mobile: 48px;
@@ -132,23 +134,11 @@
   /* -------------------------------- */
   /* GRADIENTS */
   /* -------------------------------- */
-  --gradient-pink-orange: linear-gradient(
-    90deg,
-    var(--pink-400) 0%,
-    var(--orange-400) 100%
-  );
+  --gradient-pink-orange: linear-gradient(90deg, var(--pink-400) 0%, var(--orange-400) 100%);
 
-  --gradient-orange-beigepink: linear-gradient(
-    90deg,
-    var(--orange-400) 0%,
-    var(--beigepink-200) 100%
-  );
+  --gradient-orange-beigepink: linear-gradient(90deg, var(--orange-400) 0%, var(--beigepink-200) 100%);
 
-  --gradient-blue-pink: linear-gradient(
-    90deg,
-    var(--blue-300) 0%,
-    var(--pink-400) 100%
-  );
+  --gradient-blue-pink: linear-gradient(90deg, var(--blue-300) 0%, var(--pink-400) 100%);
 
   /* Header + Footer use SAME gradient */
   --gradient-header: var(--gradient-pink-orange);
@@ -181,8 +171,8 @@
   /* -------------------------------- */
 
   /* Desktop sizes from Figma (150% line-height) */
-  --idcard-h1: 28px;
-  --idcard-h2: 24px;
+  --idcard-h1: 20px;
+  --idcard-h2: 18px;
   --idcard-p: 16px;
 
   /* Color */
@@ -192,6 +182,17 @@
   --icon-btn-size-sm: 44px;
   --icon-btn-size-md: 56px;
   --icon-btn-size-lg: 100px;
+  /* -------------------------------- */
+  /* EVENTCARD TYPOGRAPHY TOKENS */
+  /* -------------------------------- */
+
+  /* Desktop sizes from Figma (150% line-height) */
+  --eventcard-h1: 25px;
+  --eventcard-h2: 22px;
+  --eventcard-p: 16px;
+
+  /* Color */
+  --eventcard-text-color: var(--color-text);
 }
 
 /* -------------------------------- */
@@ -273,6 +274,24 @@
     .grid-site {
       grid-template-columns: repeat(var(--grid-cols-desktop), minmax(0, 1fr));
     }
+
+    .grid-desktop-cards {
+      display: grid;
+      grid-template-columns: repeat(var(--grid-cols-cards), minmax(0, 1fr));
+      gap: var(--space-gutter);
+    }
+  }
+
+  .grid-desktop-text {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-gutter);
+  }
+
+  @media (min-width: 1024px) {
+    .grid-desktop-text {
+      grid-template-columns: repeat(var(--grid-cols-text), minmax(0, 1fr));
+    }
   }
 
   /* Section spacing */
@@ -295,6 +314,12 @@
 
   .card-bordered {
     border: var(--border-card) solid var(--color-border);
+  }
+
+  .event-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-gutter);
   }
 
   /* ------------------------------- */
@@ -676,6 +701,29 @@
     font-size: var(--idcard-p);
     line-height: var(--leading-base);
     color: var(--idcard-text-color);
+  }
+
+  .t-eventcard-h1 {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--eventcard-h1);
+    line-height: var(--leading-base);
+    color: var(--eventcard-text-color);
+  }
+  .t-eventcard-h2 {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--eventcard-h2);
+    line-height: var(--leading-base);
+    color: var(--eventcard-text-color);
+  }
+
+  .t-eventcard-p {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--eventcard-p);
+    line-height: var(--leading-base);
+    color: var(--eventcard-text-color);
   }
 }
 
