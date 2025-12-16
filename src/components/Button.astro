@@ -1,6 +1,6 @@
 ---
 type Variant = "grad1" | "grad2" | "grad3";
-type Size = "default" | "icon";
+type Size = "default" | "icon-sm" | "icon-md" | "icon-lg";
 
 const {
   href,
@@ -20,18 +20,33 @@ const {
   ariaLabel?: string;
 };
 
+/* Accessibility guard for icon-only buttons */
+if (size.startsWith("icon") && !ariaLabel) {
+  console.warn("Icon buttons must have an ariaLabel");
+}
+
+/* Variant → class */
 const variantClass: Record<Variant, string> = {
   grad1: "btn-grad-1",
   grad2: "btn-grad-2",
   grad3: "btn-grad-3",
 };
 
+/* Size → class */
 const sizeClass: Record<Size, string> = {
   default: "",
-  icon: "icon-btn",
+  "icon-sm": "icon-btn icon-btn-sm",
+  "icon-md": "icon-btn icon-btn-md",
+  "icon-lg": "icon-btn icon-btn-lg",
 };
 
-const baseClasses = ["btn-base", variantClass[variant], sizeClass[size], className]
+/* Final class string */
+const baseClasses = [
+  "btn-base",
+  variantClass[variant],
+  sizeClass[size],
+  className,
+]
   .filter(Boolean)
   .join(" ");
 ---
