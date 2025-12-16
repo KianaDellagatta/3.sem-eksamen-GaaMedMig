@@ -178,6 +178,10 @@
   /* Color */
   --idcard-text-color: var(--color-white);
 
+  /* Icon button sizes */
+  --icon-btn-size-sm: 44px;
+  --icon-btn-size-md: 56px;
+  --icon-btn-size-lg: 100px;
   /* -------------------------------- */
   /* EVENTCARD TYPOGRAPHY TOKENS */
   /* -------------------------------- */
@@ -209,10 +213,47 @@
 /* -------------------------------- */
 
 @layer components {
+  /* Wrapper height so the line has space (matches your long flow) */
+  .line2-section {
+    position: relative;
+    min-height: 191vh; /* adjust per design */
+  }
+
+  /* The line is a decorative overlay */
+  .line2 {
+    position: absolute;
+    top: 200px;
+    right: 10px;
+
+    height: 180vh;
+    width: min(520px, 55vw);
+
+    transform: rotate(15deg);
+    transform-origin: top right;
+
+    z-index: var(--z-decor);
+  }
+
+  .line3-section {
+    position: relative;
+    min-height: 20vh; /* adjust to match your prototype */
+  }
+
+  .line3 {
+    position: absolute;
+    rotate: -30deg;
+    top: 0;
+    left: 20%; /* ✅ left side */
+    top: 14%;
+    width: min(200px, 28vw);
+    height: 120vh;
+    z-index: var(--z-decor);
+  }
+
   /* Container */
   .container-site {
     margin-inline: auto;
-    max-width: 1400px;
+    max-width: 1600px;
     padding-inline: 24px; /* mobile */
   }
 
@@ -465,28 +506,27 @@
     font-weight: var(--font-weight-btn);
     font-size: var(--text-btn);
     line-height: var(--leading-base);
-
     border-radius: var(--radius-btn);
     padding: 12px 20px;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-
     text-decoration: none;
-    user-select: none;
     white-space: nowrap;
     cursor: pointer;
-
     position: relative;
     overflow: hidden;
     isolation: isolate;
 
     /* shadow only on buttons */
     box-shadow: var(--shadow-btn);
-
     transition: transform 120ms ease, box-shadow 200ms ease;
+  }
+
+  /* Icon buttons should not use the default padding */
+  .btn-base.icon-btn {
+    padding: 0;
   }
 
   .btn-base:hover {
@@ -559,6 +599,36 @@
   .btn-grad-2:hover::after,
   .btn-grad-3:hover::after {
     opacity: 1;
+  }
+
+  /* Icon button sizes */
+  .icon-btn-sm {
+    width: var(--icon-btn-size-sm);
+    height: var(--icon-btn-size-sm);
+  }
+
+  .icon-btn-md {
+    width: var(--icon-btn-size-md);
+    height: var(--icon-btn-size-md);
+  }
+
+  .icon-btn-lg {
+    width: var(--icon-btn-size-lg);
+    height: var(--icon-btn-size-lg);
+  }
+
+  /* Remove padding from icon buttons */
+  .btn-base.icon-btn {
+    padding: 0;
+  }
+
+  /* Icon scaling inside icon buttons */
+  .icon-btn img,
+  .icon-btn svg {
+    width: 70%;
+    height: 70%;
+    display: block;
+    flex-shrink: 0;
   }
 
   /* ------------------------------- */
@@ -733,10 +803,8 @@
     z-index: var(--z-content);
   }
 
-  /* Icon circle button (combine with .btn-grad-*) */
+  /* Icon button base (NO size here!) */
   .icon-btn {
-    width: var(--icon-btn-size);
-    height: var(--icon-btn-size);
     border-radius: 9999px;
     display: inline-flex;
     align-items: center;

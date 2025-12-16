@@ -1,9 +1,203 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-
+import Button from "../components/Button.astro";
 ---
+
 <MainLayout title="Titel">
-	<main>
-		
-	</main>
+  <main>
+    <!-- HERO -->
+    <section class="section">
+      <div class="container-site">
+        <div class="grid-site">
+          <div class="col-span-6 lg:col-span-9">
+            <h1 class="t-h1">En stemme, der gør hjemvejen tryg</h1>
+
+            <div class="flex gap-4 mt-6">
+              <Button size="icon-lg" variant="grad1" ariaLabel="Ring til os">
+                <img src="/phone.svg" alt="" />
+              </Button>
+
+              <Button size="icon-lg" variant="grad2" ariaLabel="Chat med os">
+                <img src="/Chat.svg" alt="" />
+              </Button>
+            </div>
+          </div>
+
+          <div class="col-span-6 lg:col-start-5 lg:col-span-8">
+            <p class="t-hero">
+              Nogle aftener føles vejen hjem længere end andre. Når du tager
+              telefonen og ringer til os, møder du en rolig stemme, der træder
+              ind i din aften. En, der bliver hos dig, mens du bevæger dig
+              gennem byen
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LINE 1 -->
+    <section class="section relative min-h-[50vh] overflow-hidden" id="intro-to-not-alone">
+      <div class="container-site">
+        <div class="grid-site">
+          <div class="col-span-6 lg:col-start-7 lg:col-span-6">
+            <svg width="259" height="319" viewBox="0 0 259 319" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                data-draw="line1"
+                d="M241.529 5.00137C262.974 68.0152 269.575 187.725 124.42 162.455C-20.7345 137.185 -3.73351 252.895 22.9113 313.908"
+                stroke="#FC7324"
+                stroke-width="10"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LINE 2 (prototype placement: right side, behind content) -->
+	<section class="section py-0 line2-section overflow-hidden" id="not-alone-to-arrive">
+		<div class="container-site relative">
+		  <!-- DECORATIVE LINE -->
+		  <svg
+			class="line2 pointer-events-none"
+			viewBox="0 0 548 1382"
+			preserveAspectRatio="xMidYMid meet"
+			fill="none"
+			aria-hidden="true"
+		  >
+			<path
+			  data-draw="line2"
+			  d="M5 5.14394C210.416 9.87286 284.565 -18.6055 327.204 88.8347C374.317 207.553 60.0809 441.262 314.818 498.481C886.756 585.26 186.056 857.582 307.156 1045.85C487.805 1326.7 198.065 1394.94 104.147 1372.27"
+			  stroke="#FC7324"
+			  stroke-width="10"
+			  stroke-linecap="round"
+			  stroke-linejoin="round"
+			/>
+		  </svg>
+	  
+		  <!-- CONTENT -->
+		  <div class="grid-site relative z-content">
+			<!-- Girl -->
+			<div class="col-span-6 lg:col-start-6 lg:col-span-2">
+			  <img src="/girl.svg" alt="Pige på vej hjem" class="mx-auto w-full" />
+			</div>
+	  
+			<!-- Heading -->
+			<div class="col-span-6 lg:col-start-4 lg:col-span-6 text-center">
+			  <h2 class="t-h2">Du er ikke alene</h2>
+			</div>
+	  
+			<!-- Text -->
+			<div class="col-span-6 lg:col-start-4 lg:col-span-6 text-center">
+			  <p class="t-p">
+				Ring til os, når du har brug for støtte eller selskab på vejen hjem.
+				Vi lytter, beroliger og bliver hos dig, så længe du har brug for det.
+			  </p>
+			</div>
+	  
+			<!-- Button -->
+			<div class="col-span-6 lg:col-start-4 lg:col-span-6 flex justify-center">
+			  <Button variant="grad3" href="/stoet">Læs mere</Button>
+			</div>
+		  </div>
+		</div>
+	  </section>
+
+    <!-- LINE 3 -->
+	<section class="section pt-0 line3-section overflow-hidden" id="arrive-to-next">
+		<div class="container-site relative">
+		  <!-- DECORATIVE LINE (behind content, LEFT side) -->
+		  <svg
+			class="line3 pointer-events-none"
+			viewBox="0 0 189 368"
+			preserveAspectRatio="xMidYMid meet"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
+		  >
+			<path
+			  data-draw="line3"
+			  d="M183.189 5.00018C-2.16264 11.8323 -30.6589 100.932 41.6853 181C93.1865 237.999 -44.3139 307.999 103.187 362.499"
+			  stroke="#FC7324"
+			  stroke-width="10"
+			  stroke-linecap="round"
+			/>
+		  </svg>
+	  
+		  <!-- CONTENT ABOVE LINE -->
+		  <div class="grid-site relative z-content">
+			<div class="col-span-6 lg:col-start-4 lg:col-span-6 text-center">
+			  <img src="/girls.svg" alt="" class="mx-auto w-full max-w-md" />
+	  
+			  <h2 class="t-h2 mt-6">Og når du når frem, er vi stadig med dig</h2>
+	  
+			  <p class="t-p mt-4">
+				Samtalen stopper, men trygheden følger dig ind ad døren.
+				Du ved, at du altid kan ringe igen.
+			  </p>
+	  
+			  <div class="mt-6">
+				<Button variant="grad1" href="tel:+4512345678">
+				  +45 12 34 56 78
+				</Button>
+			  </div>
+	  
+			  <div class="mt-6 flex justify-center gap-4">
+				<Button size="icon-md" variant="grad1" ariaLabel="Ring til os" href="tel:+4512345678">
+				  <img src="/phone.svg" alt="" />
+				</Button>
+	  
+				<Button size="icon-md" variant="grad2" ariaLabel="Chat med os" href="/chat">
+				  <img src="/Chat.svg" alt="" />
+				</Button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </section>
+
+  </main>
+
+  <script>
+	// @ts-nocheck
+	import { scroll } from "motion";
+  
+	const clamp01 = (n) => Math.min(1, Math.max(0, n));
+  
+	function drawPathOnSectionScroll(sectionSelector, pathSelector, { offset = ["start 20%", "end 35%"] } = {}) {
+	  const section = document.querySelector(sectionSelector);
+	  const path = document.querySelector(pathSelector);
+	  if (!section || !path) return;
+  
+	  const length = path.getTotalLength();
+	  path.style.strokeDasharray = `${length} ${length}`;
+	  path.style.strokeDashoffset = `${length}`;
+	  path.style.willChange = "stroke-dashoffset";
+  
+	  scroll(
+		(progress) => {
+		  const p = clamp01(progress);
+		  path.style.strokeDashoffset = `${length * (1 - p)}`;
+		},
+		{
+		  container: document.documentElement,
+		  target: section,
+		  offset,
+		}
+	  );
+	}
+  
+	const init = () => {
+	  drawPathOnSectionScroll("#intro-to-not-alone", 'path[data-draw="line1"]');
+	  drawPathOnSectionScroll("#not-alone-to-arrive", 'path[data-draw="line2"]');
+  
+	  // Faster line 3
+	  drawPathOnSectionScroll("#arrive-to-next", 'path[data-draw="line3"]', {
+		offset: ["start 40%", "end 100%"],
+	  });
+	};
+  
+	document.addEventListener("DOMContentLoaded", init, { once: true });
+	document.addEventListener("astro:page-load", init);
+  </script>
 </MainLayout>
