@@ -6,15 +6,32 @@ import EventCard from "../components/EventCard.astro";
 <MainLayout title="Titel">
 	<main>
 
+		<section class="section">
+			<div class="container-site grid-desktop-text">
+				<div>
+			<h1 class="t-h2">
+				Events
+			</h1>
+			<p class="t-p">
+				Her er vores kommende events - åbne rum for fællesskab, samtale og handling. Vi mødes for at dele viden, stå sammen og skabe mere tryghed i det offentlige rum. Uanset om du er nysgerrig, engageret eller klar til at handle, er du velkommen.
+			</p>
+			</div>
+			<div class="flex justify-center">
+				<img src="/party.svg" alt="billede af en gruppe piger" />
+			</div>
+		</div>
+		</section>
 
 		<section class="section">
 			<div class="container-site">
+				<div class="event-card-list">
 <EventCard
 	date="5. August"
 	time="12:00"
 	place="Barkowski"
 	title="Aftenvandring i København"
 	description="En aften med musik, drinks og fællesskab, hvor barens overskud støtter hotlinen. Kom, dans og vær med til at skabe tryggere hjemture."
+	descriptionLong="En stemningsfuld aften med musik, kolde drinks og godt selskab, hvor barens overskud går direkte til hotlinen. Kom og dans med os, mød nye mennesker og vær med til at støtte arbejdet for tryggere hjemture."
 />
 
 <EventCard
@@ -23,6 +40,7 @@ import EventCard from "../components/EventCard.astro";
 	place="Parken"
 	title="Tryg Hjem – Fællesvandring"
 	description="En fælles aftenvandring gennem byen, hvor vi synligt går sammen og sætter fokus på tryghed, fællesskab og retten til at færdes sikkert."
+		descriptionLong="Vi går sammen gennem byen i fællesskab og synlighed. Aftenvandringen sætter fokus på tryghed, solidaritet og retten til at kunne færdes frit og sikkert. Alle er velkomne – jo flere vi er, jo stærkere står vi."
 />
 
 <EventCard
@@ -31,6 +49,7 @@ import EventCard from "../components/EventCard.astro";
 	place="Kontor"
 	title="Frivillig Fællesskabsaften"
 	description="Et afslappet socialt arrangement for nuværende frivillige og støtter. Fokus på fællesskab, erfaringsdeling og pause."
+		descriptionLong="Et uformelt og hyggeligt arrangement for nuværende frivillige og støtter. Her er der plads til nærvær, erfaringsudveksling og en velfortjent pause. Vi styrker fællesskabet og husker hinanden på, hvorfor vi er med."
 />
 
 <EventCard
@@ -39,8 +58,10 @@ import EventCard from "../components/EventCard.astro";
 	place="Kontor"
 	title="Hvem ejer natten?"
 	description="En samtale om tryghed, køn og adgang til det offentlige rum. Et åbent event med oplæg og dialog."
+		descriptionLong="En åben samtale om tryghed, køn og adgang til det offentlige rum. Eventet byder på oplæg og dialog, hvor vi deler perspektiver og erfaringer."
 />
 
+</div>
 </div>
 </section>
 
