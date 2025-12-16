@@ -47,6 +47,7 @@
   --space-container-desktop: 150px;
   --space-gutter: 20px;
   --grid-cols-cards: 4;
+  --grid-cols-text: 2;
 
   /* Spacing */
   --space-section-mobile: 48px;
@@ -170,12 +171,24 @@
   /* -------------------------------- */
 
   /* Desktop sizes from Figma (150% line-height) */
-  --idcard-h1: 28px;
-  --idcard-h2: 24px;
+  --idcard-h1: 20px;
+  --idcard-h2: 18px;
   --idcard-p: 16px;
 
   /* Color */
   --idcard-text-color: var(--color-white);
+
+  /* -------------------------------- */
+  /* EVENTCARD TYPOGRAPHY TOKENS */
+  /* -------------------------------- */
+
+  /* Desktop sizes from Figma (150% line-height) */
+  --eventcard-h1: 25px;
+  --eventcard-h2: 22px;
+  --eventcard-p: 16px;
+
+  /* Color */
+  --eventcard-text-color: var(--color-text);
 }
 
 /* -------------------------------- */
@@ -226,6 +239,12 @@
       grid-template-columns: repeat(var(--grid-cols-cards), minmax(0, 1fr));
       gap: var(--space-gutter);
     }
+  }
+
+  .grid-desktop-text {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-cols-text), minmax(0, 1fr));
+    gap: var(--space-gutter);
   }
 
   /* Section spacing */
@@ -600,6 +619,29 @@
     font-size: var(--idcard-p);
     line-height: var(--leading-base);
     color: var(--idcard-text-color);
+  }
+
+  .t-eventcard-h1 {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--eventcard-h1);
+    line-height: var(--leading-base);
+    color: var(--eventcard-text-color);
+  }
+  .t-eventcard-h2 {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--eventcard-h2);
+    line-height: var(--leading-base);
+    color: var(--eventcard-text-color);
+  }
+
+  .t-eventcard-p {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--eventcard-p);
+    line-height: var(--leading-base);
+    color: var(--eventcard-text-color);
   }
 }
 
