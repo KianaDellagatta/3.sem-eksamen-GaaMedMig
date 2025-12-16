@@ -1,0 +1,53 @@
+---
+const { date, time, place, title, description } = Astro.props;
+---
+
+<article
+class="flex overflow-hidden"
+style={{
+borderRadius: 'var(--radius-card)',
+background: 'var(--color-surface)',
+}}
+>
+<!-- Left meta column -->
+<div
+class="flex shrink-0 flex-col justify-center gap-4 px-6 py-4 text-white"
+style={{
+background: 'var(--pink-400)',
+minWidth: '180px',
+}}
+>
+<div class="flex items-center gap-3">
+<span aria-hidden="true"><img src="/Date.svg" alt="calendar" class="w-7"></span>
+<span class="font-medium">{date}</span>
+</div>
+
+
+<div class="flex items-center gap-3">
+<span aria-hidden="true"> <img src="/Time.svg" alt="clock" class="w-7"></span>
+<span class="font-medium">{time}</span>
+</div>
+
+
+<div class="flex items-center gap-3">
+<span aria-hidden="true"><img src="/place.svg" alt="location" class="w-6"></span>
+<span class="font-medium">{place}</span>
+</div>
+</div>
+
+
+<!-- Right content column -->
+<div class="flex flex-col justify-center px-40 py-5">
+<h1
+class="t-eventcard-h2">
+{title}
+</h1>
+
+
+<p
+class="t-eventcard-p">
+{description}
+</p>
+</div>
+
+</article>
