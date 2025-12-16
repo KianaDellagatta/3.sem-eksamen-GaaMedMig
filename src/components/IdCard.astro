@@ -1,51 +1,46 @@
 ---
-const { image, title, name, age } = Astro.props;
+const { image, title, name, age, description } = Astro.props;
 ---
 
 <div
-class="card max-w-sm shrink-0"
-style={{
-background: 'var(--pink-400)',
-borderRadius: 'var(--radius-card)',
-padding: 'var(--card-padding)',
-fontFamily: 'var(--font-sans)',
-}}
+  class="card max-w-sm shrink-0 relative group"
+  style={{
+    background: 'var(--pink-400)',
+    borderRadius: 'var(--radius-card)',
+    padding: 'var(--card-padding)',
+    fontFamily: 'var(--font-sans)',
+  }}
 >
-<div
-class="w-full"
-style={{
-borderRadius: 'var(--radius-card)',
-}}
->
-<div
-class="overflow-hidden"
-style={{
-  borderTopLeftRadius: 'var(--radius-card)',
-  borderTopRightRadius: 'var(--radius-card)',
-}}
->
-<img
-src={image}
-alt={name}
-class="h-60 w-full object-cover"
-loading="lazy"
-/>
+  <div class="w-full" style={{ borderRadius: 'var(--radius-card)' }}>
+    <!-- Billede -->
+    <div
+      class="overflow-hidden rounded-t-[var(--radius-card)] relative"
+      style={{ height: '15rem' }}
+    >
+      <img
+        src={image}
+        alt={name}
+        class="h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-0"
+        loading="lazy"
+      />
+
+      <!-- Hover-indhold, vises i stedet for billede -->
+      <div
+        class="absolute inset-0 flex flex-col items-center p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{ color: 'var(--color-white)' }}
+      >
+        <p class="t-idcard-p mt-2">{description}</p>
+      </div>
+    </div>
+
+    <!-- Original tekst under billedet (beholdes som fallback, kan også skjules hvis ønsket) -->
+    <div class="mt-4" style={{ color: 'var(--color-white)' }}>
+      <h3 class="t-idcard-h1">{title}</h3>
+      <p class="t-idcard-p" style={{ fontWeight: 'var(--font-weight-regular)' }}>
+        {name}, {age}
+      </p>
+    </div>
+  </div>
 </div>
 
 
-<div class="mt-4" style={{ color: 'var(--color-white)' }}>
-<h3
-class="t-idcard-h1"
-
->
-{title}
-</h3>
-<p
-class="t-idcard-p"
-style={{ fontWeight: 'var(--font-weight-regular)' }}
->
-{name}, {age}
-</p>
-</div>
-</div>
-</div>
