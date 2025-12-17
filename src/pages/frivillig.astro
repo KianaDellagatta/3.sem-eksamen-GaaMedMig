@@ -2,111 +2,146 @@
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 <MainLayout title="Bliv frivillig">
-    <main>
-		<section class="section">
-			<div class="container-site">
-				<h1 class="t-h1">Bliv en del af fællesskabet</h1>
-				<p class="t-p">Som frivillig er du med til at kræve tryghed i det offentlige rum. Din stemme gør en forskel, når nogen har brug for støtte på vejen hjem. Sammen handler vi — i stedet for at kigge væk.</p>
-			</div>
+  <main>
 
-		</section>
-        <section class="section">
-            <div class="container-site flex justify-center">
-                <form id="volunteerForm" class="card overflow-hidden max-w-2xl w-full">
-                    <!-- Pink header -->
-                    <div class="bg-pink-600 p-6 mb-6 -m-6">
-                        <h2 class="text-white font-bold t-h2">Bliv frivillig</h2>
-                        <p class="text-white t-h3 mt-2">
-                        Du behøver ikke special erfaring; du skal blot have tid, empati og lyst til at være der for andre. Vi sørger for oplæring og giver dig alt, du skal bruge for at kunne hjælpe trygt og sikkert.                        </p>
-                    </div>
+    <!-- Intro -->
+    <section class="section">
+      <div class="container-site">
+        <h1 class="t-h1">Bliv en del af fællesskabet</h1>
+        <p class="t-p">
+          Som frivillig er du med til at kræve tryghed i det offentlige rum.
+          Din stemme gør en forskel, når nogen har brug for støtte på vejen hjem.
+          Sammen handler vi — i stedet for at kigge væk.
+        </p>
+      </div>
+    </section>
 
-                    <!-- Formular indhold -->
-                    <div class="space-y-4">
-                        <p class="text-sm font-semibold text-gray-700">Udyld formularen, så vender vi tilbage til dig så hurtigt muligt</p>
+    <!-- Formular + bølgelinje -->
+    <section class="section relative overflow-hidden">
 
-                        <div class="grid grid-cols-1 gap-4">
-                            <input type="text" placeholder="Fornavn" class="border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500" />
-                            <input type="text" placeholder="Efternavn" class="border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500" />
-                        </div>
+      <!-- Bølgelinje (som før) -->
+      <img
+        src="/line2.svg"
+        alt="linje"
+        class="md:block absolute bottom-110 w-full pointer-events-none z-0"
+      />
 
-                        <input type="email" placeholder="E-mail" class="w-full border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500" />
+      <!-- ⭐ Venstre stjerne -->
+      <div class="hidden md:block absolute left-[-6rem] top-1/2 -translate-y-1/2 z-10">
+        <div class="flex justify-center animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear">
+          <img
+            src="/star2.svg"
+            alt="stjerne"
+            class="w-46 md:w-72 pointer-events-none"
+          />
+        </div>
+      </div>
 
-                        <input type="tel" placeholder="Telefonnummer" class="w-full border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500" />
+      <!-- ⭐ Højre stjerne -->
+      <div class="hidden md:block absolute right-0 top-0 z-10">
+        <div class="flex justify-center animate-wiggle animate-infinite animate-duration-[6000ms] animate-ease-linear">
+          <img
+            src="/star4.svg"
+            alt="stjerne"
+            class="w-32 md:w-56 pointer-events-none"
+          />
+        </div>
+      </div>
 
-                        <div class="space-y-2">
-                            <label class="text-sm font-semibold text-gray-700">Fødseldsdag:</label>
-                            <div class="grid grid-cols-3 gap-3">
-                                <select class="border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500">
-                                    <option>Dag</option>
-                                    {Array.from({ length: 31 }, (_, i) => (
-                                        <option>{i + 1}</option>
-                                    ))}
-                                </select>
-                                <select class="border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500">
-                                    <option>Måned</option>
-                                    {["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December"].map((month, index) => (
-                                        <option>{month}</option>
-                                    ))}
-                                </select>
-                                <select class="border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500">
-                                    <option>År</option>
-                                    {Array.from({ length: 26 }, (_, i) => (
-                                        <option>{1980 + i}</option>
-                                    ))}
-                                </select>
-                            </div>
-                        </div>
+      <!-- Indhold -->
+      <div class="container-site flex justify-center relative z-10">
 
-                        <div class="space-y-2">
-                            <label class="text-sm font-semibold text-gray-700">Motiverende ansøgning:</label>
-                            <textarea placeholder="Kort tekst om dig selv og hvorfor du vil være frivillig..." class="w-full border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500 h-32"></textarea>
-                        </div>
+        <!-- Formular -->
+        <form id="volunteerForm" class="card overflow-hidden max-w-2xl w-full">
+          <!-- Pink header -->
+          <div class="bg-pink-600 p-6 mb-6 -m-6">
+            <h2 class="text-white font-bold t-h2">Bliv frivillig</h2>
+            <h3 class="text-white t-h3 mt-2">
+              Du behøver ikke special erfaring; du skal blot have tid, empati og lyst
+              til at være der for andre. Vi sørger for oplæring og giver dig alt,
+              du skal bruge for at kunne hjælpe trygt og sikker.
+            </h3>
+          </div>
 
-                        <label class="flex items-center gap-2 text-sm text-gray-700">
-                            <input type="checkbox" class="w-4 h-4 border border-pink-300 rounded" />
-                            <span>I må gerne kontakte mig med information om næste skridt i frivilligprocessen</span>
-                        </label>
+          <!-- Formular indhold -->
+          <div class="space-y-4">
+            <p class="t-p">Udyld formularen, så vender vi tilbage til dig så hurtigt muligt</p>
 
-                        <button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold py-3 rounded-lg hover:opacity-90 transition">
-                            Send ansøgning
-                        </button>
-                    </div>
-                </form>
-
-                <!-- Tak-siden (skjult) -->
-                <div id="thankYou" class="card overflow-hidden max-w-2xl w-full hidden">
-                    <div class="bg-pink-600 p-6 mb-6 -m-6 mb-6">
-                        <h2 class="text-white font-bold text-2xl">Tak for din ansøgning!</h2>
-                    </div>
-                    <div class="space-y-4">
-                        <p class="text-gray-800 text-lg">
-                            Vi er rigtig glade for din interesse i at blive frivillig hos Gå Med Mig.
-                        </p>
-                        <p class="text-gray-700">
-                            Din ansøgning er modtaget, og vi vender tilbage til dig hurtigst muligt med mere information om næste trin i processen.
-                        </p>
-                        <p class="text-gray-700">
-                            Hvis du har spørgsmål, kan du altid skrive til gaamedmigfrivillig@gmail.com.
-                        </p>
-                        <div class="pt-4">
-                            <a href="/" class="inline-block bg-pink-600 text-white font-semibold py-3 px-6 rounded-lg hover:opacity-90 transition">
-                                Tilbage til forsiden
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="grid grid-cols-1 gap-4">
+              <input type="text" placeholder="Fornavn" class="border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500" />
+              <input type="text" placeholder="Efternavn" class="border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500" />
             </div>
-        </section>
-    </main>
+
+            <input type="email" placeholder="E-mail" class="w-full border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500" />
+            <input type="tel" placeholder="Telefonnummer" class="w-full border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500" />
+
+            <div class="space-y-2">
+              <label class="text-sm">Fødseldsdag:</label>
+              <div class="grid grid-cols-3 gap-3">
+                <select class="border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                  <option>Dag</option>
+                  {Array.from({ length: 31 }, (_, i) => <option>{i + 1}</option>)}
+                </select>
+                <select class="border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                  <option>Måned</option>
+                  {["Januar","Februar","Marts","April","Maj","Juni","Juli","August","September","Oktober","November","December"].map(m => <option>{m}</option>)}
+                </select>
+                <select class="border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                  <option>År</option>
+                  {Array.from({ length: 26 }, (_, i) => <option>{1980 + i}</option>)}
+                </select>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm">Motiverende ansøgning:</label>
+              <textarea
+                placeholder="Kort tekst om dig selv og hvorfor du vil være frivillig..."
+                class="w-full border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500 h-32"
+              ></textarea>
+            </div>
+
+            <label class="flex items-center gap-2 text-sm">
+              <input type="checkbox" class="w-4 h-4 border border-pink-300 rounded" />
+              <span>I må gerne kontakte mig med information om næste skridt i frivilligprocessen</span>
+            </label>
+
+            <button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold py-3 rounded-lg hover:opacity-90 transition">
+              Send ansøgning
+            </button>
+          </div>
+        </form>
+
+        <!-- Tak-besked -->
+        <div id="thankYou" class="card overflow-hidden max-w-2xl w-full hidden">
+          <div class="bg-pink-600 p-6 mb-6 -m-6">
+            <h2 class="text-white t-h2">Tak for din ansøgning!</h2>
+          </div>
+          <div class="space-y-4">
+            <p class="t-p">Vi er rigtig glade for din interesse i at blive frivillig hos Gå Med Mig.</p>
+            <p class="t-p">Din ansøgning er modtaget, og vi vender tilbage hurtigst muligt.</p>
+            <p class="t-p">Spørgsmål? Skriv til gaamedmigfrivillig@gmail.com.</p>
+            <div class="pt-4">
+              <a href="/" class="inline-block bg-pink-600 text-white font-semibold py-3 px-6 rounded-lg hover:opacity-90 transition">
+                Tilbage til forsiden
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
 </MainLayout>
 
 <script>
-    const form = document.getElementById('volunteerForm');
-    const thankYou = document.getElementById('thankYou');
+  const form = document.getElementById('volunteerForm');
+  const thankYou = document.getElementById('thankYou');
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        form.classList.add('hidden');
-        thankYou.classList.remove('hidden');
-    });
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    form.classList.add('hidden');
+    thankYou.classList.remove('hidden');
+  });
 </script>
