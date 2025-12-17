@@ -7,7 +7,7 @@ import MainLayout from "../layouts/MainLayout.astro";
     <!-- Intro -->
     <section class="section">
       <div class="container-site">
-        <h1 class="t-h1">Bliv en del af fællesskabet</h1>
+        <h1 class="t-h1">Vær en del af fællesskabet</h1>
         <p class="t-p">
           Som frivillig er du med til at kræve tryghed i det offentlige rum.
           Din stemme gør en forskel, når nogen har brug for støtte på vejen hjem.
@@ -16,17 +16,17 @@ import MainLayout from "../layouts/MainLayout.astro";
       </div>
     </section>
 
-    <!-- Formular + bølgelinje -->
+    <!-- formular og dekoration -->
     <section class="section relative overflow-hidden">
 
-      <!-- Bølgelinje (som før) -->
+      <!-- Bølgelinje -->
       <img
         src="/line2.svg"
         alt="linje"
-        class="md:block absolute bottom-110 w-full pointer-events-none z-0"
+        class="hidden md:block absolute bottom-100 w-full pointer-events-none z-0"
       />
 
-      <!-- ⭐ Venstre stjerne -->
+      <!-- Venstre stjerne -->
       <div class="hidden md:block absolute left-[-6rem] top-1/2 -translate-y-1/2 z-10">
         <div class="flex justify-center animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear">
           <img
@@ -37,7 +37,7 @@ import MainLayout from "../layouts/MainLayout.astro";
         </div>
       </div>
 
-      <!-- ⭐ Højre stjerne -->
+      <!-- Højre stjerne -->
       <div class="hidden md:block absolute right-0 top-0 z-10">
         <div class="flex justify-center animate-wiggle animate-infinite animate-duration-[6000ms] animate-ease-linear">
           <img
@@ -54,8 +54,8 @@ import MainLayout from "../layouts/MainLayout.astro";
         <!-- Formular -->
         <form id="volunteerForm" class="card overflow-hidden max-w-2xl w-full">
           <!-- Pink header -->
-          <div class="bg-pink-600 p-6 mb-6 -m-6">
-            <h2 class="text-white font-bold t-h2">Bliv frivillig</h2>
+        <div class="bg-pink-500 card mb-4">
+            <h2 class="text-white t-h2">Bliv frivillig</h2>
             <h3 class="text-white t-h3 mt-2">
               Du behøver ikke special erfaring; du skal blot have tid, empati og lyst
               til at være der for andre. Vi sørger for oplæring og giver dig alt,
@@ -106,7 +106,7 @@ import MainLayout from "../layouts/MainLayout.astro";
               <span>I må gerne kontakte mig med information om næste skridt i frivilligprocessen</span>
             </label>
 
-            <button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold py-3 rounded-lg hover:opacity-90 transition">
+            <button type="submit" class="w-full bg-pink-500 text-white font-semibold py-3 rounded-lg hover:opacity-90 transition cursor-pointer ">
               Send ansøgning
             </button>
           </div>
