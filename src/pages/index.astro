@@ -6,14 +6,14 @@ import Button from "../components/Button.astro";
 <MainLayout title="Titel">
   <main>
     <!-- HERO -->
-    <section class="section pb-0">
+    <section class="section pb-0" data-inview="text">
       <div class="container-site">
         <div class="grid-site">
           <!-- LEFT -->
           <div class="col-span-full lg:col-start-1 lg:col-span-9">
             <h1 class="t-h1">En stemme, der gør hjemvejen tryg</h1>
 
-            <div class="flex gap-4 mt-6">
+            <div class="flex gap-4 mt-6 animate-bounce animate-infinite animate-duration-[2000ms] animate-ease-in">
               <Button size="icon-md" variant="grad1" ariaLabel="Ring til os">
                 <img src="/phone.svg" alt="" aria-hidden="true" />
               </Button>
@@ -34,7 +34,7 @@ import Button from "../components/Button.astro";
           </div>
 
           <!-- STAR -->
-          <div class="col-span-full lg:col-start-11 lg:col-span-2 lg:justify-self-end">
+          <div class="col-span-full lg:col-start-11 lg:col-span-2 lg:justify-self-end" data-hover="star">
             <img
               src="/star2.svg"
               alt=""
@@ -50,7 +50,7 @@ import Button from "../components/Button.astro";
     <section
       class="section relative overflow-hidden py-0 lg:min-h-[40vh]"
       id="intro-to-not-alone"
-      aria-label="Dekorativ linje 1"
+      aria-label="Dekorativ linje 1" 
     >
       <div class="container-site relative">
         <div class="grid-site">
@@ -77,12 +77,17 @@ import Button from "../components/Button.astro";
         </div>
 
         <!-- STAR -->
-        <img
+		
+		<img
           src="/star1.svg"
           alt=""
           aria-hidden="true"
           class="decor-star animate-wiggle-more animate-infinite"
+		  
         />
+		
+        
+		
       </div>
     </section>
 
@@ -114,17 +119,20 @@ import Button from "../components/Button.astro";
         </svg>
 
         <!-- STAR 6 (desktop only) -->
-        <img
-          src="/star6.svg"
-          alt=""
-          aria-hidden="true"
-          class="hidden lg:block absolute right-[50rem] bottom-[-25rem] lg:w-40 animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear"
-        />
+		 <div data-hover="star">
+			<img
+			src="/star6.svg"
+			alt=""
+			aria-hidden="true"
+			class="hidden lg:block absolute right-[50rem] bottom-[-25rem] lg:w-40 animate-spin animate-infinite animate-duration-[6000ms] animate-ease-linear" 
+		  />
+		 </div>
+       
 
         <!-- CONTENT -->
-        <div class="grid-site relative z-content">
+        <div class="grid-site relative z-content" data-inview="text">
           <!-- Girl -->
-          <div class="col-span-6 lg:col-start-6 lg:col-span-2">
+          <div class="col-span-6 min-w-50 lg:col-start-6 lg:col-span-2">
             <img
               src="/girl.svg"
               alt="Pige på vej hjem"
@@ -155,7 +163,7 @@ import Button from "../components/Button.astro";
 
     <!-- LINE 3 -->
     <section
-      class="section pt-0 line3-section overflow-hidden"
+      class="section lg:pt-0 line3-section overflow-hidden"
       id="arrive-to-next"
       aria-label="Og når du når frem"
     >
@@ -181,7 +189,7 @@ import Button from "../components/Button.astro";
         </svg>
 
         <!-- CONTENT -->
-        <div class="grid-site relative z-content">
+        <div class="grid-site relative z-content" data-inview="text">
           <div class="col-start-2 col-span-4 lg:col-start-4 lg:col-span-6 text-center">
             <img src="/girls.svg" alt="" aria-hidden="true" class="mx-auto w-full max-w-md" />
 
@@ -207,12 +215,12 @@ import Button from "../components/Button.astro";
             </div>
 
             <!-- STAR -->
-            <div class="mt-6 flex justify-end">
+            <div class="mt-6 flex justify-end" data-hover="star">
               <img
                 src="/star3.svg"
                 alt=""
                 aria-hidden="true"
-                class="w-30 lg:w-40 animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear"
+                class="w-30 lg:w-40 animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear" 
               />
             </div>
           </div>
@@ -222,7 +230,7 @@ import Button from "../components/Button.astro";
     </section>
 
     <!-- INFO CARDS -->
-    <section class="section" aria-label="Information">
+    <section class="section" aria-label="Information" data-inview="text">
       <div class="container-site">
         <div class="grid-site gap-y-6 lg:gap-y-8">
 
@@ -275,7 +283,7 @@ import Button from "../components/Button.astro";
 	
 
     <!-- VOICE SECTION -->
-    <section class="section" aria-label="Bliv frivillig">
+    <section class="section" aria-label="Bliv frivillig" data-inview="text">
       <div class="container-site">
         <div class="grid-site voice-section">
 			
@@ -311,7 +319,7 @@ import Button from "../components/Button.astro";
     </section>
 
     <!-- MEET OUR HEROES -->
-    <section class="section" aria-label="Mød vores frivillige">
+    <section class="section" aria-label="Mød vores frivillige" data-inview="text">
       <div class="container-site">
         <div class="heroes-layout">
           <!-- CARD -->
@@ -345,50 +353,121 @@ import Button from "../components/Button.astro";
   </main>
 
   <script>
-    // @ts-nocheck
-    import { scroll } from "motion";
-
-    const clamp01 = (n) => Math.min(1, Math.max(0, n));
-
-    function drawPathOnSectionScroll(
-      sectionSelector,
-      pathSelector,
-      { offset = ["start 20%", "end 35%"] } = {}
-    ) {
-      const section = document.querySelector(sectionSelector);
-      const path = document.querySelector(pathSelector);
-      if (!section || !path) return;
-
-      const length = path.getTotalLength();
-      path.style.strokeDasharray = `${length} ${length}`;
-      path.style.strokeDashoffset = `${length}`;
-      path.style.willChange = "stroke-dashoffset";
-
-      scroll(
-        (progress) => {
-          const p = clamp01(progress);
-          path.style.strokeDashoffset = `${length * (1 - p)}`;
-        },
-        {
-          container: document.documentElement,
-          target: section,
-          offset,
-        }
-      );
-    }
-
-    const init = () => {
-      // Mobile: no decorative lines, and no animation work
-      if (window.innerWidth < 1024) return;
-
-      drawPathOnSectionScroll("#intro-to-not-alone", 'path[data-draw="line1"]');
-      drawPathOnSectionScroll("#not-alone-to-arrive", 'path[data-draw="line2"]');
-      drawPathOnSectionScroll("#arrive-to-next", 'path[data-draw="line3"]', {
-        offset: ["start 40%", "end 100%"],
-      });
-    };
-
-    document.addEventListener("DOMContentLoaded", init, { once: true });
-    document.addEventListener("astro:page-load", init);
+	// @ts-nocheck
+	import { scroll, inView, animate } from "motion";
+  
+	const clamp01 = (n) => Math.min(1, Math.max(0, n));
+  
+	function drawPathOnSectionScroll(
+	  sectionSelector,
+	  pathSelector,
+	  { offset = ["start 20%", "end 35%"] } = {}
+	) {
+	  const section = document.querySelector(sectionSelector);
+	  const path = document.querySelector(pathSelector);
+	  if (!section || !path) return;
+  
+	  const length = path.getTotalLength();
+	  path.style.strokeDasharray = `${length} ${length}`;
+	  path.style.strokeDashoffset = `${length}`;
+	  path.style.willChange = "stroke-dashoffset";
+  
+	  scroll(
+		(progress) => {
+		  const p = clamp01(progress);
+		  path.style.strokeDashoffset = `${length * (1 - p)}`;
+		},
+		{
+		  container: document.documentElement,
+		  target: section,
+		  offset,
+		}
+	  );
+	}
+  
+	function initTextInView() {
+	  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+	  if (reduced) return;
+  
+	  const targets = document.querySelectorAll('[data-inview="text"]');
+  
+	  targets.forEach((el) => {
+		// Prevent double-binding on Astro client-side navigations
+		if (el.dataset.inviewReady) return;
+		el.dataset.inviewReady = "true";
+  
+		// Initial state
+		animate(el, { opacity: 0, y: 14 }, { duration: 0 });
+  
+		inView(
+		  el,
+		  () => {
+			// Animate only once
+			if (el.dataset.inviewDone) return;
+			el.dataset.inviewDone = "true";
+  
+			animate(el, { opacity: 1, y: 0 }, { duration: 0.6, easing: "ease-out" });
+		  },
+		  { amount: 0.2 }
+		);
+	  });
+	}
+  
+	function initStarHover() {
+	  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+	  if (reduced) return;
+  
+	  const stars = document.querySelectorAll('[data-hover="star"] img');
+  
+	  stars.forEach((star) => {
+		if (star.dataset.hoverReady) return;
+		star.dataset.hoverReady = "true";
+  
+		// Helps the browser optimize
+		star.style.willChange = "transform, filter";
+  
+		star.addEventListener("mouseenter", () => {
+		  animate(
+			star,
+			{
+			  scale: 1.5,
+			  rotate: "+=90",
+			  filter: "drop-shadow(0 0 12px var(--pink-500))",
+			},
+			{ duration: 0.45, easing: "ease-out" }
+		  );
+		});
+  
+		star.addEventListener("mouseleave", () => {
+		  animate(
+			star,
+			{
+			  scale: 1,
+			  rotate: 0,
+			  filter: "drop-shadow(0 0 0 rgba(0,0,0,0))",
+			},
+			{ duration: 0.4, easing: "ease-in-out" }
+		  );
+		});
+	  });
+	}
+  
+	const init = () => {
+	  // Always: text + hover
+	  initTextInView();
+	  initStarHover();
+  
+	  // Desktop only: decorative line scroll animations
+	  if (window.innerWidth < 1024) return;
+  
+	  drawPathOnSectionScroll("#intro-to-not-alone", 'path[data-draw="line1"]');
+	  drawPathOnSectionScroll("#not-alone-to-arrive", 'path[data-draw="line2"]');
+	  drawPathOnSectionScroll("#arrive-to-next", 'path[data-draw="line3"]', {
+		offset: ["start 40%", "end 100%"],
+	  });
+	};
+  
+	document.addEventListener("DOMContentLoaded", init, { once: true });
+	document.addEventListener("astro:page-load", init);
   </script>
 </MainLayout>
