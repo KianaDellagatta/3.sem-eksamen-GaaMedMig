@@ -134,11 +134,23 @@
   /* -------------------------------- */
   /* GRADIENTS */
   /* -------------------------------- */
-  --gradient-pink-orange: linear-gradient(90deg, var(--pink-400) 0%, var(--orange-400) 100%);
+  --gradient-pink-orange: linear-gradient(
+    90deg,
+    var(--pink-400) 0%,
+    var(--orange-400) 100%
+  );
 
-  --gradient-orange-beigepink: linear-gradient(90deg, var(--orange-400) 0%, var(--beigepink-200) 100%);
+  --gradient-orange-beigepink: linear-gradient(
+    90deg,
+    var(--orange-400) 0%,
+    var(--beigepink-200) 100%
+  );
 
-  --gradient-blue-pink: linear-gradient(90deg, var(--blue-300) 0%, var(--pink-400) 100%);
+  --gradient-blue-pink: linear-gradient(
+    90deg,
+    var(--blue-300) 0%,
+    var(--pink-400) 100%
+  );
 
   /* Header + Footer use SAME gradient */
   --gradient-header: var(--gradient-pink-orange);
@@ -249,6 +261,152 @@
     height: 120vh;
     z-index: var(--z-decor);
   }
+  .decor-star {
+    position: absolute;
+    left: 6%;
+    top: 35%;
+    width: 120px;
+    height: auto;
+    z-index: var(--z-decor);
+    pointer-events: none;
+  }
+  svg[data-line] {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    svg[data-line] {
+      display: block;
+    }
+  }
+
+  /* ------------------------------- */
+  /* INFO CARDS SECTION */
+  /* ------------------------------- */
+
+  .info-card__title {
+    margin-bottom: 10px;
+  }
+
+  .info-card__text {
+    margin-bottom: 16px;
+  }
+
+  .info-card__actions {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .info-card--wide__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    .info-card--wide__content {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+  }
+
+  /* ------------------------------- */
+  /* VOICE SECTION */
+  /* ------------------------------- */
+
+  .voice-illustration {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* ===== HEROES SECTION ===== */
+  /* ===== HEROES SECTION ===== */
+
+  /* Layout: stacked by default */
+  .heroes-layout {
+    display: grid;
+    gap: 24px;
+    align-items: start;
+  }
+
+  /* Card */
+  .heroes-card {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* CTA: centered by default */
+  .heroes-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+  }
+
+  /* Images grid */
+  .heroes-grid {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+
+    /* prevents images from becoming huge when stacked */
+    max-width: 680px;
+  }
+
+  /* Tablet: 3 columns */
+  @media (min-width: 768px) {
+    .heroes-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      max-width: none; /* let it breathe when side-by-side later */
+    }
+  }
+
+  /* 1024–1279: stacked layout (mobile style) */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .heroes-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .heroes-cta {
+      justify-content: center;
+      margin-top: 24px;
+    }
+  }
+
+  /* Wide desktop (>=1280): card left, images right */
+  @media (min-width: 1280px) {
+    .heroes-layout {
+      grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .heroes-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      max-width: none;
+    }
+
+    .heroes-cta {
+      justify-content: flex-start;
+      margin-top: auto;
+    }
+  }
+
+  /* Tiles */
+  .heroes-grid img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: var(--radius-2);
+    display: block;
+  }
 
   /* Container */
   .container-site {
@@ -293,7 +451,25 @@
       grid-template-columns: repeat(var(--grid-cols-text), minmax(0, 1fr));
     }
   }
+  /* Option B: hide ONLY the decorative line svgs on mobile */
+  svg[data-line] {
+    display: none;
+  }
 
+  @media (min-width: 1024px) {
+    svg[data-line] {
+      display: block;
+    }
+  }
+
+  /* If your desktop line sections use big vh heights, make them desktop-only */
+  @media (max-width: 1023px) {
+    .line2-section,
+    .line3-section {
+      min-height: auto !important;
+      height: auto !important;
+    }
+  }
   /* Section spacing */
   .section {
     padding-block: var(--space-section-mobile);
