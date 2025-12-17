@@ -53,7 +53,7 @@
   --space-section-mobile: 48px;
   --space-section-desktop: 80px;
 
-  --card-padding: 16px;
+  --card-padding: 35px;
 
   /* Radius tokens */
   --radius-1: 10px;
@@ -120,15 +120,15 @@
   --shadow-btn-hover: 0 8px 26px rgba(0, 0, 0, 0.22);
 
   /* Typography sizes (Desktop) */
-  --text-h1-desktop: 48px;
-  --text-h2-desktop: 40px;
-  --text-hero-desktop: 36px;
-  --text-p1-desktop: 30px;
+  --text-h1-desktop: 40px;
+  --text-h2-desktop: 36px;
+  --text-hero-desktop: 32px;
+  --text-p1-desktop: 28px;
 
   /* Typography sizes (Mobile) */
   --text-h1-mobile: 32px;
-  --text-h2-mobile: 30px;
-  --text-hero-mobile: 30px;
+  --text-h2-mobile: 28px;
+  --text-hero-mobile: 24px;
   --text-p-mobile: 20px;
 
   /* -------------------------------- */
@@ -192,7 +192,7 @@
 
   /* Icon button sizes */
   --icon-btn-size-sm: 44px;
-  --icon-btn-size-md: 56px;
+  --icon-btn-size-md: 70px;
   --icon-btn-size-lg: 100px;
   /* -------------------------------- */
   /* EVENTCARD TYPOGRAPHY TOKENS */
