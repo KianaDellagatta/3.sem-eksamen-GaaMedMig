@@ -10,12 +10,12 @@ const {
 } = Astro.props;
 
 const ACCENT_HEX: Record<string,string> = {
-  pink: "#ec4899",
+  pink: "#ff58b0",
   beigepink: "#ba015c",
 };
 
 const accentColor = ACCENT_HEX[accent] || ACCENT_HEX.pink;
-const buttonStyle = `background-color: ${accentColor}; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem;`;
+const buttonStyle = `background-color: ${accentColor}; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;`;
 const headerStyle = `background-color: ${accentColor}; color: white; padding: 1.5rem;`;
 ---
 <div
