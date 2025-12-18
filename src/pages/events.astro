@@ -75,7 +75,7 @@ import EventCard from "../components/EventCard.astro";
     <img
       src="/star3.svg"
       alt="stjerne"
-      class="absolute bottom-5 right-5 md:bottom-10 md:right-25 w-25 md:w-50 z-10 pointer-events-none animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear"
+      class="absolute bottom-5 right-5 xl:bottom-10 xl:right-16 w-25 xl:w-50 z-10 pointer-events-none animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear"
     />
 
   </main>
@@ -120,4 +120,7 @@ import EventCard from "../components/EventCard.astro";
 
   document.addEventListener("DOMContentLoaded", init, { once: true });
   document.addEventListener("astro:page-load", init);
+  is:inline
+  defer
+  src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
 </script>
