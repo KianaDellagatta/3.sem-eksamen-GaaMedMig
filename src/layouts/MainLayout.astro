@@ -1,32 +1,108 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import '../styles/tailwind.css';
+import "../styles/tailwind.css";
+
 const { title } = Astro.props;
 ---
-<html lang="da">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{Astro.props.title}</title>
-		<script defer src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"></script>
-	</head>
-	<body class="">
-		
-		<Header></Header>
-		
-		<slot />
 
-		<Footer></Footer>
-		<script>
-			if (
-			  !localStorage.getItem("siteAccess") &&
-			  window.location.pathname !== "/login"
-			) {
-			  window.location.href = "/login";
-			}
-		  </script>
-	</body>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <script
+      defer
+      src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"
+    ></script>
+  </head>
+
+  <body>
+    <!-- 🔒 FULLSCREEN ACCESS OVERLAY -->
+    <div
+      id="access-overlay"
+      class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-md"
+    >
+      <div class="card text-center max-w-md w-full mx-4">
+        <h1 class="t-h2">Adgang til prototype</h1>
+
+        <p class="t-p mt-4">
+          Dette website er et <strong>redesign-projekt</strong> lavet til
+          undervisningsbrug.
+        </p>
+
+        <p class="t-p mt-2">
+          Indtast adgangskoden for at se prototypen.
+        </p>
+
+        <form
+          class="mt-6"
+          onsubmit="event.preventDefault(); handleAccessLogin();"
+        >
+          <label for="pw" class="sr-only">Adgangskode</label>
+
+          <input
+            id="pw"
+            type="text"
+            required
+            placeholder="Adgangskode"
+            class="donation__input text-black"
+          />
+
+          <button type="submit" class="btn-base btn-grad-1 mt-4 w-full">
+            Giv adgang
+          </button>
+        </form>
+
+        <p class="t-p mt-4 text-sm opacity-70">
+          (Kode: <strong>EK</strong>)
+        </p>
+      </div>
+    </div>
+
+    <!-- HEADER -->
+    <Header />
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- FOOTER -->
+    <Footer />
+
+    <!-- 🔧 ACCESS LOGIC -->
+    <script is:inline>
+      const PASSWORD = "EK"; // 👈 change if needed
+
+      function handleAccessLogin() {
+        const input = document.getElementById("pw");
+        const overlay = document.getElementById("access-overlay");
+
+        if (!input || !overlay) return;
+
+        if (input.value === PASSWORD) {
+          sessionStorage.setItem("site-access", "granted");
+          overlay.style.display = "none";
+        } else {
+          alert("Forkert adgangskode");
+        }
+      }
+
+      // Auto-unlock if already logged in this session
+      (function () {
+        if (typeof window === "undefined") return;
+
+        const overlay = document.getElementById("access-overlay");
+        const hasAccess = sessionStorage.getItem("site-access") === "granted";
+
+        if (hasAccess && overlay) {
+          overlay.style.display = "none";
+        }
+      })();
+    </script>
+  </body>
 </html>
