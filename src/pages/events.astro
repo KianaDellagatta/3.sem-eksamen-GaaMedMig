@@ -4,86 +4,83 @@ import EventCard from "../components/EventCard.astro";
 
 ---
 <MainLayout title="Titel">
-	<main>
+  <main class="relative">
 
-		<section class="section">
-			<div class="container-site grid-desktop-text">
-				<div>
-			<h1 data-inview="text" class="t-h2">
-				Events
-			</h1>
-			<p data-inview="text" class="t-p">
-				Her er vores kommende events - åbne rum for fællesskab, samtale og handling. Vi mødes for at dele viden, stå sammen og skabe mere tryghed i det offentlige rum. Uanset om du er nysgerrig, engageret eller klar til at handle, er du velkommen.
-			</p>
-			</div>
-			<div class="flex justify-end">
-				<img src="/party.svg" alt="billede af en gruppe piger" />
-			</div>
-		</div>
+    <!-- Intro -->
+    <section class="section relative z-10">
+      <div class="container-site grid-desktop-text">
+        <div>
+          <h1 data-inview="text" class="t-h2">Events</h1>
+          <p data-inview="text" class="t-p">
+            Her er vores kommende events - åbne rum for fællesskab, samtale og handling. Vi mødes for at dele viden, stå sammen og skabe mere tryghed i det offentlige rum. Uanset om du er nysgerrig, engageret eller klar til at handle, er du velkommen.
+          </p>
+        </div>
+        <div class="flex justify-center md:justify-end">
+          <img src="/party.svg" alt="billede af en gruppe piger" />
+        </div>
+      </div>
+    </section>
 
-		<div class="relative w-full h-80"> <!-- relative container -->
-  <!-- Stjerne 1 -->
-  <img
-    src="/star3.svg"
-    alt="stjerne"
-    class=" md:block absolute top-323 md:top-300 right-5 md:right-25 w-25 md:w-50 z-10 pointer-events-none animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear"
-  />
-
-    <!-- bølgelinje -->
-  <img
-    src="/line2.svg"
-    alt="linje"
-    class="md:block absolute -top-20 md:-top-120 w-full pointer-events-none"
-  />
-
-</div>
-		</section>
-
-		<section class="section">
-			<div class="container-site">
-				<div class="event-card-list">
-<EventCard
-	date="5. August"
-	time="12:00"
-	place="Barkowski"
-	title="Aftenvandring i København"
-	description="En aften med musik, drinks og fællesskab, hvor barens overskud støtter hotlinen. Kom, dans og vær med til at skabe tryggere hjemture."
-	descriptionLong="En stemningsfuld aften med musik, kolde drinks og godt selskab, hvor barens overskud går direkte til hotlinen. Kom og dans med os, mød nye mennesker og vær med til at støtte arbejdet for tryggere hjemture."
+  <!-- Bølgelinje -->
+<img
+  src="/line2.svg"
+  alt="linje"
+  class="md:block absolute top-100 md:top-0 w-full pointer-events-none"
 />
 
-<EventCard
-	date="7. Oktober"
-	time="17:00"
-	place="Parken"
-	title="Tryg Hjem – Fællesvandring"
-	description="En fælles aftenvandring gennem byen, hvor vi synligt går sammen og sætter fokus på tryghed, fællesskab og retten til at færdes sikkert."
-		descriptionLong="Vi går sammen gennem byen i fællesskab og synlighed. Aftenvandringen sætter fokus på tryghed, solidaritet og retten til at kunne færdes frit og sikkert. Alle er velkomne – jo flere vi er, jo stærkere står vi."
-/>
+<!-- Events med mere luft -->
+<section class="section relative z-10 mt-20"> <!-- mt-20 giver afstand fra bølgen -->
+  <div class="container-site">
+    <div class="event-card-list">
+      <EventCard
+        date="5. August"
+        time="12:00"
+        place="Barkowski"
+        title="Aftenvandring i København"
+        description="En aften med musik, drinks og fællesskab, hvor barens overskud støtter hotlinen. Kom, dans og vær med til at skabe tryggere hjemture."
+        descriptionLong="En stemningsfuld aften med musik, kolde drinks og godt selskab, hvor barens overskud går direkte til hotlinen. Kom og dans med os, mød nye mennesker og vær med til at støtte arbejdet for tryggere hjemture."
+      />
 
-<EventCard
-	date="9. November"
-	time="16:00"
-	place="Kontor"
-	title="Frivillig Fællesskabsaften"
-	description="Et afslappet socialt arrangement for nuværende frivillige og støtter. Fokus på fællesskab, erfaringsdeling og pause."
-		descriptionLong="Et uformelt og hyggeligt arrangement for nuværende frivillige og støtter. Her er der plads til nærvær, erfaringsudveksling og en velfortjent pause. Vi styrker fællesskabet og husker hinanden på, hvorfor vi er med."
-/>
+      <EventCard
+        date="7. Oktober"
+        time="17:00"
+        place="Parken"
+        title="Tryg Hjem – Fællesvandring"
+        description="En fælles aftenvandring gennem byen, hvor vi synligt går sammen og sætter fokus på tryghed, fællesskab og retten til at færdes sikkert."
+        descriptionLong="Vi går sammen gennem byen i fællesskab og synlighed. Aftenvandringen sætter fokus på tryghed, solidaritet og retten til at kunne færdes frit og sikkert. Alle er velkomne – jo flere vi er, jo stærkere står vi."
+      />
 
-<EventCard
-	date="1. december"
-	time="15:00"
-	place="Kontor"
-	title="Hvem ejer natten?"
-	description="En samtale om tryghed, køn og adgang til det offentlige rum. Et åbent event med oplæg og dialog."
-		descriptionLong="En åben samtale om tryghed, køn og adgang til det offentlige rum. Eventet byder på oplæg og dialog, hvor vi deler perspektiver og erfaringer."
-/>
+      <EventCard
+        date="9. November"
+        time="16:00"
+        place="Kontor"
+        title="Frivillig Fællesskabsaften"
+        description="Et afslappet socialt arrangement for nuværende frivillige og støtter. Fokus på fællesskab, erfaringsdeling og pause."
+        descriptionLong="Et uformelt og hyggeligt arrangement for nuværende frivillige og støtter. Her er der plads til nærvær, erfaringsudveksling og en velfortjent pause. Vi styrker fællesskabet og husker hinanden på, hvorfor vi er med."
+      />
 
-</div>
-</div>
+      <EventCard
+        date="1. december"
+        time="15:00"
+        place="Kontor"
+        title="Hvem ejer natten?"
+        description="En samtale om tryghed, køn og adgang til det offentlige rum. Et åbent event med oplæg og dialog."
+        descriptionLong="En åben samtale om tryghed, køn og adgang til det offentlige rum. Eventet byder på oplæg og dialog, hvor vi deler perspektiver og erfaringer."
+      />
+    </div>
+  </div>
 </section>
 
-	</main>
+    <!-- Stjerne nederst -->
+    <img
+      src="/star3.svg"
+      alt="stjerne"
+      class="absolute bottom-5 right-5 md:bottom-10 md:right-25 w-25 md:w-50 z-10 pointer-events-none animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear"
+    />
+
+  </main>
 </MainLayout>
+
 
 <script>
   // @ts-nocheck
