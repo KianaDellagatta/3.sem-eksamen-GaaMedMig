@@ -173,7 +173,8 @@
   --donation-text-color: var(--color-white);
 
   /* Desktop sizes from Figma (150% line-height) */
-  --donation-h1: 30px;
+  --donation-h1: 26px;
+  --donation-h1-desktop: 30px;
   --donation-h2: 36px;
   --donation-p: 22px;
   --donation-form-text: 20px;
@@ -256,14 +257,19 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 5px;
   }
 
   .donation__title {
     font-size: var(--donation-h1);
     margin: 0;
   }
-
+  @media (min-width: 1024px) {
+    .donation__title {
+      font-size: var(--donation-h1-desktop);
+      margin: 0;
+    }
+  }
   .donation__title-icon {
     width: 48px;
     height: 48px;
