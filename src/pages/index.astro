@@ -6,49 +6,54 @@ import Button from "../components/Button.astro";
 <MainLayout title="Titel">
   <main>
     <!-- HERO -->
-    <section class="section pb-0" data-inview="text">
-      <div class="container-site">
-        <div class="grid-site">
-          <!-- LEFT -->
-          <div class="col-span-full lg:col-start-1 lg:col-span-9">
-            <h1 class="t-h1">En stemme, der gør hjemvejen tryg</h1>
+	<section class="section pb-0" data-inview="text">
+	  <div class="container-site">
+		<div class="grid-site">
+		  <!-- LEFT -->
+		  <div class="col-span-5 lg:col-start-1 lg:col-span-7">
+			<h1 class="t-h1">En stemme, der gør hjemvejen tryg</h1>
+			<p class="t-hero max-w-prose">
+				Nogle aftener føles vejen hjem længere.
+				Når du ringer eller skriver, er en rolig stemme med dig gennem byen.
+			</p>
 
-            <div class="flex gap-4 mt-6 animate-bounce animate-infinite animate-duration-[2000ms] animate-ease-in">
-              <Button size="icon-md" variant="grad1" ariaLabel="Ring til os">
-                <img src="/phone.svg" alt="" aria-hidden="true" />
-              </Button>
+			<div class="flex gap-4 mt-6 ">
+			  <Button size="icon-md" variant="grad1" ariaLabel="Ring til os">
+				<img src="/phone.svg" alt="" aria-hidden="true" />
+			  </Button>
 
-              <Button size="icon-md" variant="grad2" ariaLabel="Chat med os">
-                <img src="/Chat.svg" alt="" aria-hidden="true" />
-              </Button>
-            </div>
-          </div>
+			  <Button size="icon-md" variant="grad2" ariaLabel="Chat med os">
+				<img src="/Chat.svg" alt="" aria-hidden="true" />
+			  </Button>
+			</div>
 
-          <!-- RIGHT -->
-          <div class="col-span-full lg:col-start-5 lg:col-span-8">
-            <p class="t-hero">
-              Nogle aftener føles vejen hjem længere end andre. Når du tager
-              telefonen og ringer til os, møder du en rolig stemme, der træder ind i
-              din aften. En, der bliver hos dig, mens du bevæger dig gennem byen
-            </p>
-          </div>
-
-          <!-- STAR -->
-          <div class="col-span-full lg:col-start-11 lg:col-span-2 lg:justify-self-end" data-hover="star">
-            <img
-              src="/star2.svg"
-              alt=""
-              aria-hidden="true"
-              class="w-30 lg:w-6xl animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
+		
+		  </div>
+		  <div class="col-span-full lg:col-start-8 lg:col-span-4 lg:ml-10">
+			<div class="star-wrap">
+			  <!-- Star -->
+			  <img
+				src="/star2.svg"
+				alt=""
+				aria-hidden="true"
+				class="star-bg animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear"
+			  />
+		  
+			  <!-- Foreground image -->
+			  <img
+				src="/girlonphone.svg"
+				alt="Kvinde der taler i telefon"
+				class="girl-img"
+			  />
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</section>
 
     <!-- LINE 1 -->
     <section
-      class="section relative overflow-hidden py-0 lg:min-h-[40vh]"
+      class="section relative overflow-hidden pb-0 lg:min-h-[40vh]"
       id="intro-to-not-alone"
       aria-label="Dekorativ linje 1" 
     >
@@ -82,7 +87,7 @@ import Button from "../components/Button.astro";
           src="/star1.svg"
           alt=""
           aria-hidden="true"
-          class="decor-star animate-wiggle-more animate-infinite"
+          class="decor-star animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear"
 		  
         />
 		
@@ -119,12 +124,12 @@ import Button from "../components/Button.astro";
         </svg>
 
         <!-- STAR 6 (desktop only) -->
-		 <div data-hover="star">
+		 <div>
 			<img
 			src="/star6.svg"
 			alt=""
 			aria-hidden="true"
-			class="hidden lg:block absolute right-[50rem] bottom-[-25rem] lg:w-40 animate-spin animate-infinite animate-duration-[6000ms] animate-ease-linear" 
+			class="hidden lg:block absolute right-[50rem] bottom-[-25rem] lg:w-40 animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear" 
 		  />
 		 </div>
        
@@ -215,7 +220,7 @@ import Button from "../components/Button.astro";
             </div>
 
             <!-- STAR -->
-            <div class="mt-6 flex justify-end" data-hover="star">
+            <div class="mt-6 flex justify-end">
               <img
                 src="/star3.svg"
                 alt=""
@@ -413,49 +418,12 @@ import Button from "../components/Button.astro";
 	  });
 	}
   
-	function initStarHover() {
-	  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-	  if (reduced) return;
-  
-	  const stars = document.querySelectorAll('[data-hover="star"] img');
-  
-	  stars.forEach((star) => {
-		if (star.dataset.hoverReady) return;
-		star.dataset.hoverReady = "true";
-  
-		// Helps the browser optimize
-		star.style.willChange = "transform, filter";
-  
-		star.addEventListener("mouseenter", () => {
-		  animate(
-			star,
-			{
-			  scale: 1.5,
-			  rotate: "+=90",
-			  filter: "drop-shadow(0 0 12px var(--pink-500))",
-			},
-			{ duration: 0.45, easing: "ease-out" }
-		  );
-		});
-  
-		star.addEventListener("mouseleave", () => {
-		  animate(
-			star,
-			{
-			  scale: 1,
-			  rotate: 0,
-			  filter: "drop-shadow(0 0 0 rgba(0,0,0,0))",
-			},
-			{ duration: 0.4, easing: "ease-in-out" }
-		  );
-		});
-	  });
-	}
+
   
 	const init = () => {
 	  // Always: text + hover
 	  initTextInView();
-	  initStarHover();
+	  
   
 	  // Desktop only: decorative line scroll animations
 	  if (window.innerWidth < 1024) return;
