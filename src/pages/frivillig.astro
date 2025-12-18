@@ -16,20 +16,19 @@ import MainLayout from "../layouts/MainLayout.astro";
             Sammen kan vi gøre en reel forskel.
           </p>
         </div>
-      </div>
-      <!-- Stjerne under intro -->
-      <div class="absolute right-10 bottom-20 justify-center animate-wiggle animate-infinite animate-duration-[6000ms] animate-ease-linear">
-        <img src="/star2.svg" alt="stjerne" class="hidden w-72 md:block" />
-      </div>
+      </div>   
     </section>
 
-    <!-- formular og dekoration -->
+        <!-- bølgelinje -->
+  <img
+    src="/line.svg"
+    alt="linje"
+    class="md:block absolute bottom-38 md:-bottom-40 w-full pointer-events-none"
+  />
+
+    <!-- formular -->
     <section class="section relative overflow-hidden mb-10">
-
-      <!-- Indhold -->
       <div class="container-site flex justify-center relative z-10">
-
-        <!-- Formular -->
         <form id="volunteerForm" class="card overflow-hidden max-w-2xl w-full mb-4">
           <!-- Pink header -->
           <div class="accentpink card mb-4">
@@ -41,7 +40,6 @@ import MainLayout from "../layouts/MainLayout.astro";
             </h3>
           </div>
 
-          <!-- Formular indhold -->
           <div class="space-y-4">
             <p class="t-p">Udfyld formularen, så vender vi tilbage til dig hurtigst muligt</p>
 
@@ -90,7 +88,7 @@ import MainLayout from "../layouts/MainLayout.astro";
           </div>
         </form>
 
-        <!-- Tak-besked -->
+        <!-- Tak for ansøgning-besked -->
         <div id="thankYou" class="card overflow-hidden max-w-2xl w-full hidden">
           <div class="card accentpink p-6 mb-6">
             <h2 class="text-white t-h2">Tak for din ansøgning!</h2>
@@ -106,11 +104,11 @@ import MainLayout from "../layouts/MainLayout.astro";
             </div>
           </div>
         </div>
-
       </div>
 
+       <!-- stjerne dekorationer -->
       <!-- Venstre stjerne -->
-      <div class="hidden md:block absolute left-[-6rem] top-1/2 -translate-y-1/2 z-10">
+      <div class="hidden md:block absolute left-[-6rem] top-1/2 z-10">
         <div class="flex justify-center animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear">
           <img
             src="/star2.svg"
@@ -130,16 +128,7 @@ import MainLayout from "../layouts/MainLayout.astro";
           />
         </div>
       </div>
-
-      <!-- Bølgelinje placeret udenfor formular-container, z-0 -->
-      <img
-        src="/line2.svg"
-        alt="linje"
-        class="absolute bottom-0 w-full pointer-events-none z-0"
-      />
-
     </section>
-
   </main>
 </MainLayout>
 
