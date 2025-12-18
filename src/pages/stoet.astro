@@ -10,8 +10,8 @@ import MainLayout from "../layouts/MainLayout.astro";
 
     <!-- Venstre side: intro-tekst -->
     <div>
-      <h1 class="title t-h1">Vil du støtte os?</h1>
-      <p class="t-p">
+      <h1 data-inview="text"class="title t-h1">Vil du støtte os?</h1>
+      <p data-inview="text"class="t-p">
         Når du donerer, er du med til at gøre en forskel her og nu.
         Din støtte går direkte til hotlinen og vores arbejde for tryghed, nærvær og fællesskab.
       </p>
@@ -57,26 +57,74 @@ import MainLayout from "../layouts/MainLayout.astro";
       </div>
     </section>
 
+    <!-- Mobile stjerne -->
+    <div class="md:hidden absolute bottom-50 right-6 pointer-events-none">
+      <img
+        src="/star1.svg"
+        alt="stjerne"
+        class="w-24 animate-wiggle animate-infinite animate-duration-[6000ms]"
+      />
+    </div>
 
 <section class="section relative z-10 mb-15">
   <div class="container-site relative">
     <div class="max-w-4xl text-left">
-      <h2 class="title t-h2">Helt præcist går din donation til…</h2>
-      <p class="t-p">
-        Drift af telefonlinjen (telefoni, software, sikkerhed)<br>
+      <h2 data-inview="text"class="title t-h2">Helt præcist går din donation til…</h2>
+      <p data-inview="text"class="t-p">
+        Drift af telefonlinjen<br>
         Uddannelse af frivillige<br>
         Support og supervision<br>
-        Kommunikation og outreach, så flere kender hjælpen<br>
+        Kommunikation og markedsføring, så flere kender til hjælpen<br>
         Rekruttering af frivillige
       </p>
     </div>
 
     <!-- Dekorative stjerner i højre side -->
-    <div class="absolute bottom-2 right-40 flex flex-col space-y-4 pointer-events-none">
-      <img src="/star1.svg" alt="stjerne" class="w-46 hidden md:block md:w-72 animate-wiggle animate-infinite animate-duration-[4500ms]"/>
+    <div class="absolute bottom-0 right-40 flex flex-col space-y-4 pointer-events-none">
+      <img src="/star1.svg" alt="stjerne" class="hidden w-24 md:block md:w-72 animate-wiggle animate-infinite animate-duration-[4500ms]"/>
     </div>
   </div>
 </section>
-
   </main>
 </MainLayout>
+
+<script>
+  // @ts-nocheck
+  import { inView, animate } from "motion";
+
+  function initTextInView() {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+
+    const targets = document.querySelectorAll('[data-inview="text"]');
+
+    targets.forEach((el) => {
+      // Prevent double-binding on Astro client-side navigations
+      if (el.dataset.inviewReady) return;
+      el.dataset.inviewReady = "true";
+
+      // Initial state
+      animate(el, { opacity: 0, y: 14 }, { duration: 0 });
+
+      inView(
+        el,
+        () => {
+          // Animate only once
+          if (el.dataset.inviewDone) return;
+          el.dataset.inviewDone = "true";
+
+          animate(el, { opacity: 1, y: 0 }, { duration: 0.6, easing: "ease-out" });
+        },
+        { amount: 0.2 }
+      );
+    });
+  }
+
+  const init = () => {
+    initTextInView();
+  };
+
+  document.addEventListener("DOMContentLoaded", init, { once: true });
+  document.addEventListener("astro:page-load", init);
+</script>
+

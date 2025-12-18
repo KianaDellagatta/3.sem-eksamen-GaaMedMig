@@ -134,23 +134,11 @@
   /* -------------------------------- */
   /* GRADIENTS */
   /* -------------------------------- */
-  --gradient-pink-orange: linear-gradient(
-    90deg,
-    var(--pink-400) 0%,
-    var(--orange-400) 100%
-  );
+  --gradient-pink-orange: linear-gradient(90deg, var(--pink-400) 0%, var(--orange-400) 100%);
 
-  --gradient-orange-beigepink: linear-gradient(
-    90deg,
-    var(--orange-400) 0%,
-    var(--beigepink-200) 100%
-  );
+  --gradient-orange-beigepink: linear-gradient(90deg, var(--orange-400) 0%, var(--beigepink-200) 100%);
 
-  --gradient-blue-pink: linear-gradient(
-    90deg,
-    var(--blue-300) 0%,
-    var(--pink-400) 100%
-  );
+  --gradient-blue-pink: linear-gradient(90deg, var(--blue-300) 0%, var(--pink-400) 100%);
 
   /* Header + Footer use SAME gradient */
   --gradient-header: var(--gradient-pink-orange);
@@ -270,6 +258,7 @@
     z-index: var(--z-decor);
     pointer-events: none;
   }
+
   svg[data-line] {
     display: none;
   }
@@ -985,5 +974,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .accentpink {
+    background-color: var(--beigepink-500);
   }
 }
