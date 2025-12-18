@@ -120,10 +120,10 @@
   --shadow-btn-hover: 0 8px 26px rgba(0, 0, 0, 0.22);
 
   /* Typography sizes (Desktop) */
-  --text-h1-desktop: 40px;
-  --text-h2-desktop: 36px;
-  --text-hero-desktop: 32px;
-  --text-p1-desktop: 28px;
+  --text-h1-desktop: 34px;
+  --text-h2-desktop: 30px;
+  --text-hero-desktop: 28px;
+  --text-p1-desktop: 24px;
 
   /* Typography sizes (Mobile) */
   --text-h1-mobile: 32px;
@@ -343,7 +343,6 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
-
     /* prevents images from becoming huge when stacked */
     max-width: 680px;
   }
@@ -353,7 +352,8 @@
     .heroes-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
-      max-width: none; /* let it breathe when side-by-side later */
+      max-width: none;
+      /* let it breathe when side-by-side later */
     }
   }
 
@@ -374,6 +374,8 @@
     .heroes-layout {
       grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
       gap: 24px;
+      max-width: 1045px;
+      justify-self: center;
     }
 
     .heroes-grid {
@@ -889,6 +891,49 @@
     font-size: var(--eventcard-p);
     line-height: var(--leading-base);
     color: var(--eventcard-text-color);
+  }
+
+  /* ================================= */
+  /* FIXED REFERENCE FOR STAR + IMAGE */
+  /* ================================= */
+
+  .star-wrap {
+    position: relative;
+    width: 400px; /* 🔒 fixed visual anchor */
+    height: 320px;
+    margin-inline: auto; /* center in column */
+  }
+
+  /* Foreground image */
+  .girl-img {
+    position: relative;
+    z-index: 2;
+    width: 160px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* Star background */
+  .star-bg {
+    position: absolute;
+    inset: 0; /* 👈 locks center */
+    margin: auto;
+    width: 400px;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.9;
+  }
+
+  /* Optional: mobile tuning */
+  @media (max-width: 1023px) {
+    .star-wrap {
+      width: 400px;
+      height: 280px;
+    }
+
+    .star-bg {
+      width: 400px;
+    }
   }
 }
 
