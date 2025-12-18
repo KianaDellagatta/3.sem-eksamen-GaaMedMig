@@ -9,10 +9,10 @@ import EventCard from "../components/EventCard.astro";
 		<section class="section">
 			<div class="container-site grid-desktop-text">
 				<div>
-			<h1 class="t-h2">
+			<h1 data-inview="text" class="t-h2">
 				Events
 			</h1>
-			<p class="t-p">
+			<p data-inview="text" class="t-p">
 				Her er vores kommende events - åbne rum for fællesskab, samtale og handling. Vi mødes for at dele viden, stå sammen og skabe mere tryghed i det offentlige rum. Uanset om du er nysgerrig, engageret eller klar til at handle, er du velkommen.
 			</p>
 			</div>
@@ -84,3 +84,43 @@ import EventCard from "../components/EventCard.astro";
 
 	</main>
 </MainLayout>
+
+<script>
+  // @ts-nocheck
+  import { inView, animate } from "motion";
+
+  function initTextInView() {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+
+    const targets = document.querySelectorAll('[data-inview="text"]');
+
+    targets.forEach((el) => {
+      // Prevent double-binding on Astro client-side navigations
+      if (el.dataset.inviewReady) return;
+      el.dataset.inviewReady = "true";
+
+      // Initial state
+      animate(el, { opacity: 0, y: 14 }, { duration: 0 });
+
+      inView(
+        el,
+        () => {
+          // Animate only once
+          if (el.dataset.inviewDone) return;
+          el.dataset.inviewDone = "true";
+
+          animate(el, { opacity: 1, y: 0 }, { duration: 0.6, easing: "ease-out" });
+        },
+        { amount: 0.2 }
+      );
+    });
+  }
+
+  const init = () => {
+    initTextInView();
+  };
+
+  document.addEventListener("DOMContentLoaded", init, { once: true });
+  document.addEventListener("astro:page-load", init);
+</script>

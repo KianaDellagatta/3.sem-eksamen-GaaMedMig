@@ -10,8 +10,8 @@ import MainLayout from "../layouts/MainLayout.astro";
         <!-- Venstre side: intro-tekst -->
         <div>
           <h1 data-inview="text" class="title t-h1">Vær en del af fællesskabet</h1>
-          <p data-inview="text"class="t-p">
-            Bliv en del af vores mission om at gøre vores samfund sikkert.
+          <p data-inview="text" class="t-p">
+            Bliv en del af vores mission om at gøre vores samfund mere sikkert.
             Som frivillig bidrager du med din tid og empati til at skabe positive forandringer.
             Sammen kan vi gøre en reel forskel.
           </p>
@@ -22,37 +22,9 @@ import MainLayout from "../layouts/MainLayout.astro";
         <img src="/star2.svg" alt="stjerne" class="hidden w-72 md:block" />
       </div>
     </section>
+
     <!-- formular og dekoration -->
-    <section class="section relative overflow-hidden">
-
-      <!-- Bølgelinje -->
-      <img
-        src="/line2.svg"
-        alt="linje"
-        class="absolute bottom-100 w-full pointer-events-none z-0"
-      />
-
-      <!-- Venstre stjerne -->
-      <div class="hidden md:block absolute left-[-6rem] top-1/2 -translate-y-1/2 z-10">
-        <div class="flex justify-center animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear">
-          <img
-            src="/star2.svg"
-            alt="stjerne"
-            class="w-46 md:w-72 pointer-events-none"
-          />
-        </div>
-      </div>
-
-      <!-- Højre stjerne -->
-      <div class="hidden md:block absolute right-0 top-0 z-10">
-        <div class="flex justify-center animate-wiggle animate-infinite animate-duration-[6000ms] animate-ease-linear">
-          <img
-            src="/star4.svg"
-            alt="stjerne"
-            class="w-32 md:w-56 pointer-events-none"
-          />
-        </div>
-      </div>
+    <section class="section relative overflow-hidden mb-10">
 
       <!-- Indhold -->
       <div class="container-site flex justify-center relative z-10">
@@ -60,20 +32,18 @@ import MainLayout from "../layouts/MainLayout.astro";
         <!-- Formular -->
         <form id="volunteerForm" class="card overflow-hidden max-w-2xl w-full mb-4">
           <!-- Pink header -->
-      
-        <div class="accentpink card mb-4">
-
+          <div class="accentpink card mb-4">
             <h2 class="text-white t-h2">Bliv frivillig</h2>
             <h3 class="text-white t-h3 mt-2">
               Du behøver ikke special erfaring; du skal blot have tid, empati og lyst
               til at være der for andre. Vi sørger for oplæring og giver dig alt,
-              du skal bruge for at kunne hjælpe trygt og sikker.
+              du skal bruge for at kunne hjælpe andre.
             </h3>
           </div>
 
           <!-- Formular indhold -->
           <div class="space-y-4">
-            <p class="t-p">Udyld formularen, så vender vi tilbage til dig hurtigst muligt</p>
+            <p class="t-p">Udfyld formularen, så vender vi tilbage til dig hurtigst muligt</p>
 
             <div class="grid grid-cols-1 gap-4">
               <input type="text" placeholder="Fornavn" class="border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500" />
@@ -84,7 +54,7 @@ import MainLayout from "../layouts/MainLayout.astro";
             <input type="tel" placeholder="Telefonnummer" class="w-full border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500" />
 
             <div class="space-y-2">
-              <label class="text-sm">Fødseldsdag:</label>
+              <label class="text-sm">Fødselsdag:</label>
               <div class="grid grid-cols-3 gap-3">
                 <select class="border border-pink-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-500">
                   <option>Dag</option>
@@ -114,7 +84,7 @@ import MainLayout from "../layouts/MainLayout.astro";
               <span>Jeg ønsker at modtage nyhedsbreve og opdateringer fra Gå Med Mig</span>
             </label>
 
-            <button type="submit" class="w-full accentpink text-white font-semibold py-3 rounded-lg hover:opacity-90 transition cursor-pointer ">
+            <button type="submit" class="w-full accentpink text-white font-semibold py-3 rounded-lg hover:opacity-90 transition cursor-pointer">
               Send ansøgning
             </button>
           </div>
@@ -122,7 +92,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 
         <!-- Tak-besked -->
         <div id="thankYou" class="card overflow-hidden max-w-2xl w-full hidden">
-          <div class="bg-pink-600 p-6 mb-6 -m-6">
+          <div class="card accentpink p-6 mb-6">
             <h2 class="text-white t-h2">Tak for din ansøgning!</h2>
           </div>
           <div class="space-y-4">
@@ -138,13 +108,43 @@ import MainLayout from "../layouts/MainLayout.astro";
         </div>
 
       </div>
+
+      <!-- Venstre stjerne -->
+      <div class="hidden md:block absolute left-[-6rem] top-1/2 -translate-y-1/2 z-10">
+        <div class="flex justify-center animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear">
+          <img
+            src="/star2.svg"
+            alt="stjerne"
+            class="w-46 md:w-72 pointer-events-none"
+          />
+        </div>
+      </div>
+
+      <!-- Højre stjerne -->
+      <div class="absolute right-0 top-0 z-10">
+        <div class="flex justify-center animate-wiggle animate-infinite animate-duration-[6000ms] animate-ease-linear">
+          <img
+            src="/star4.svg"
+            alt="stjerne"
+            class="w-32 md:w-56 pointer-events-none"
+          />
+        </div>
+      </div>
+
+      <!-- Bølgelinje placeret udenfor formular-container, z-0 -->
+      <img
+        src="/line2.svg"
+        alt="linje"
+        class="absolute bottom-0 w-full pointer-events-none z-0"
+      />
+
     </section>
 
   </main>
 </MainLayout>
 
 <script>
-   // @ts-nocheck
+  // @ts-nocheck
   const form = document.getElementById('volunteerForm');
   const thankYou = document.getElementById('thankYou');
 
@@ -154,7 +154,6 @@ import MainLayout from "../layouts/MainLayout.astro";
     thankYou.classList.remove('hidden');
   });
 
- 
   import { inView, animate } from "motion";
 
   function initTextInView() {
@@ -164,17 +163,14 @@ import MainLayout from "../layouts/MainLayout.astro";
     const targets = document.querySelectorAll('[data-inview="text"]');
 
     targets.forEach((el) => {
-      // Prevent double-binding on Astro client-side navigations
       if (el.dataset.inviewReady) return;
       el.dataset.inviewReady = "true";
 
-      // Initial state
       animate(el, { opacity: 0, y: 14 }, { duration: 0 });
 
       inView(
         el,
         () => {
-          // Animate only once
           if (el.dataset.inviewDone) return;
           el.dataset.inviewDone = "true";
 
