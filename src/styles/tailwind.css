@@ -96,8 +96,6 @@
   --color-text: var(--color-black);
   --color-surface: var(--color-white);
 
-  /* Border (cards with stroke) */
-
   /* Readability */
   --max-prose: 60ch;
 
@@ -108,7 +106,7 @@
   /* Icon buttons (phone/chat circles) */
   --icon-btn-size: 44px;
 
-  /* Button typography (Rubik Medium 24) */
+  /* Button typography */
   --text-btn: 24px;
   --font-btn: var(--font-display);
   --font-weight-btn: var(--font-weight-medium);
@@ -140,39 +138,30 @@
     var(--pink-400) 0%,
     var(--orange-400) 100%
   );
-
   --gradient-orange-beigepink: linear-gradient(
     90deg,
     var(--orange-400) 0%,
     var(--beigepink-200) 100%
   );
-
   --gradient-blue-pink: linear-gradient(
     90deg,
     var(--blue-300) 0%,
     var(--pink-400) 100%
   );
 
-  /* Header + Footer use SAME gradient */
+  /* Header + Footer */
   --gradient-header: var(--gradient-pink-orange);
   --gradient-footer: var(--gradient-pink-orange);
 
-  /* -------------------------------- */
-  /* BUTTON GRADIENT HOVER FILLS */
-  /* On hover: gradient -> solid fill (token-based) */
-  /* Adjust these if your Figma specifies different solids */
-  /* -------------------------------- */
-  --btn-grad-1-hover: var(--pink-500); /* for pink->orange button */
-  --btn-grad-2-hover: var(--beigepink-500); /* for orange->beigepink button */
-  --btn-grad-3-hover: var(--pink-500); /* for blue->pink button */
+  /* Button gradient hover fills */
+  --btn-grad-1-hover: var(--pink-500);
+  --btn-grad-2-hover: var(--beigepink-500);
+  --btn-grad-3-hover: var(--pink-500);
 
   /* -------------------------------- */
   /* DONATION TYPOGRAPHY TOKENS */
   /* -------------------------------- */
-
   --donation-text-color: var(--color-white);
-
-  /* Desktop sizes from Figma (150% line-height) */
   --donation-h1: 26px;
   --donation-h1-desktop: 30px;
   --donation-h2: 36px;
@@ -183,29 +172,22 @@
   /* -------------------------------- */
   /* IDCARD TYPOGRAPHY TOKENS */
   /* -------------------------------- */
-
-  /* Desktop sizes from Figma (150% line-height) */
   --idcard-h1: 20px;
   --idcard-h2: 18px;
   --idcard-p: 16px;
-
-  /* Color */
   --idcard-text-color: var(--color-white);
 
   /* Icon button sizes */
   --icon-btn-size-sm: 44px;
   --icon-btn-size-md: 70px;
   --icon-btn-size-lg: 100px;
+
   /* -------------------------------- */
   /* EVENTCARD TYPOGRAPHY TOKENS */
   /* -------------------------------- */
-
-  /* Desktop sizes from Figma (150% line-height) */
   --eventcard-h1: 25px;
   --eventcard-h2: 22px;
   --eventcard-p: 16px;
-
-  /* Color */
   --eventcard-text-color: var(--color-text);
 }
 
@@ -223,251 +205,392 @@
 }
 
 /* -------------------------------- */
-/* COMPONENT HELPERS (reused) */
+/* COMPONENTS */
 /* -------------------------------- */
 
 @layer components {
   /* ------------------------------- */
-  /* DONATION COMPONENT */
+  /* LAYOUT HELPERS */
   /* ------------------------------- */
 
-  .donation {
-    max-width: 28rem;
+  .container-site {
     margin-inline: auto;
-    overflow: hidden;
-    border-radius: var(--radius-2);
-    background: var(--color-surface);
+    max-width: 1600px;
+    padding-inline: 24px;
   }
 
-  /* Accent variants (no inline styles) */
-  .donation--pink .donation__header {
-    background: var(--pink-400);
-  }
-  .donation--beigepink .donation__header {
-    background: var(--beigepink-500);
-  }
-
-  .donation__header {
-    color: var(--donation-text-color);
-
-    padding: 24px;
-  }
-
-  .donation__title-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 5px;
-  }
-
-  .donation__title {
-    font-size: var(--donation-h1);
-    margin: 0;
-  }
   @media (min-width: 1024px) {
-    .donation__title {
-      font-size: var(--donation-h1-desktop);
-      margin: 0;
+    .container-site {
+      padding-inline: var(--space-container-desktop);
     }
   }
-  .donation__title-icon {
-    width: 48px;
-    height: 48px;
+
+  .grid-site {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-cols-mobile), minmax(0, 1fr));
+    gap: var(--space-gutter);
+  }
+
+  @media (min-width: 1024px) {
+    .grid-site {
+      grid-template-columns: repeat(var(--grid-cols-desktop), minmax(0, 1fr));
+    }
+
+    .grid-desktop-cards {
+      display: grid;
+      grid-template-columns: repeat(var(--grid-cols-cards), minmax(0, 1fr));
+      gap: var(--space-gutter);
+    }
+  }
+
+  .grid-desktop-text {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-gutter);
+  }
+
+  @media (min-width: 1024px) {
+    .grid-desktop-text {
+      grid-template-columns: repeat(var(--grid-cols-text), minmax(0, 1fr));
+    }
+  }
+
+  .section {
+    padding-block: var(--space-section-mobile);
+  }
+
+  @media (min-width: 1024px) {
+    .section {
+      padding-block: var(--space-section-desktop);
+    }
+  }
+
+  /* ------------------------------- */
+  /* CARD */
+  /* ------------------------------- */
+
+  .card {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-card);
+    padding: var(--card-padding);
+  }
+
+  .card-bordered {
+    border: var(--border-card) solid var(--color-border);
+  }
+
+  /* ------------------------------- */
+  /* BUTTONS */
+  /* ------------------------------- */
+
+  .btn-base {
+    font-family: var(--font-btn);
+    font-weight: var(--font-weight-btn);
+    font-size: var(--text-btn);
+    line-height: var(--leading-base);
+    border-radius: var(--radius-btn);
+    padding: 12px 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: var(--shadow-btn);
+    transition: transform 120ms ease, box-shadow 200ms ease;
+  }
+
+  .btn-base:hover {
+    box-shadow: var(--shadow-btn-hover);
+  }
+
+  .btn-base:active {
+    transform: scale(0.98);
+    box-shadow: var(--shadow-btn);
+  }
+
+  /* Icon buttons should not use the default padding */
+  .btn-base.icon-btn {
+    padding: 0;
+  }
+
+  .btn-grad-1,
+  .btn-grad-2,
+  .btn-grad-3 {
+    color: var(--btn-text);
+    background: none;
+  }
+
+  .btn-grad-1::before,
+  .btn-grad-2::before,
+  .btn-grad-3::before,
+  .btn-grad-1::after,
+  .btn-grad-2::after,
+  .btn-grad-3::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transition: opacity 320ms ease;
+  }
+
+  .btn-grad-1::before {
+    background: var(--gradient-pink-orange);
+    opacity: 1;
+  }
+  .btn-grad-2::before {
+    background: var(--gradient-orange-beigepink);
+    opacity: 1;
+  }
+  .btn-grad-3::before {
+    background: var(--gradient-blue-pink);
+    opacity: 1;
+  }
+
+  .btn-grad-1::after {
+    background-color: var(--btn-grad-1-hover);
+    opacity: 0;
+  }
+  .btn-grad-2::after {
+    background-color: var(--btn-grad-2-hover);
+    opacity: 0;
+  }
+  .btn-grad-3::after {
+    background-color: var(--btn-grad-3-hover);
+    opacity: 0;
+  }
+
+  .btn-grad-1:hover::before,
+  .btn-grad-2:hover::before,
+  .btn-grad-3:hover::before {
+    opacity: 0;
+  }
+
+  .btn-grad-1:hover::after,
+  .btn-grad-2:hover::after,
+  .btn-grad-3:hover::after {
+    opacity: 1;
+  }
+
+  /* Icon button sizes */
+  .icon-btn-sm {
+    width: var(--icon-btn-size-sm);
+    height: var(--icon-btn-size-sm);
+  }
+  .icon-btn-md {
+    width: var(--icon-btn-size-md);
+    height: var(--icon-btn-size-md);
+  }
+  .icon-btn-lg {
+    width: var(--icon-btn-size-lg);
+    height: var(--icon-btn-size-lg);
+  }
+
+  .icon-btn img,
+  .icon-btn svg {
+    width: 70%;
+    height: 70%;
     display: block;
     flex-shrink: 0;
   }
 
-  .donation__subtitle {
-    margin-top: 8px;
+  /* ------------------------------- */
+  /* NAV / HEADER */
+  /* ------------------------------- */
+
+  .glow-link {
+    transition: filter 220ms ease, transform 120ms ease;
   }
 
-  .donation__body {
-    padding: 24px;
-    display: grid;
-    gap: 16px;
+  .glow-link:hover {
+    filter: drop-shadow(0 0 12px var(--color-white));
+    transform: translateY(-1px);
   }
 
-  .donation__step-title {
-    text-align: center;
-    font-weight: var(--font-weight-medium);
-    margin-bottom: 30px;
-    font-size: var(--donation-p);
+  .glow-link[aria-current="page"] {
+    filter: drop-shadow(0 0 14px var(--color-white));
   }
 
-  .donation__amounts {
+  .nav-pill {
+    background: var(--gradient-header);
+    border-radius: var(--radius-3);
+    box-shadow: var(--shadow-btn);
+    min-height: 72px;
     display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-    font-size: var(--donation-p);
-  }
-
-  .donation__amount-btn {
-    border: 3px solid var(--beigepink-200);
-    border-radius: 12px;
-    padding: 10px 14px;
-    font-size: 14px;
-    background: transparent;
-    cursor: pointer;
-    font-size: var(--donation-form-text);
-  }
-
-  .donation__amount-btn.is-selected {
-    background-color: var(--beigepink-200); /* light pink fill */
-    border: 4px solid var(--beigepink-400); /* darker pink border */
-    opacity: 1; /* IMPORTANT: remove fade */
-  }
-
-  .donation__field {
-    margin-bottom: 12px;
-  }
-
-  .donation__input {
-    width: 100%;
-    border: 3px solid var(--beigepink-200);
-    border-radius: 12px;
-    padding: 10px 14px;
-    margin-bottom: 30px;
-    font-size: var(--donation-form-text);
-    color: var(--donation-text-color);
-  }
-
-  .donation__nav {
-    display: flex;
+    align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    margin-top: 8px;
-    padding-top: 20px;
+    padding-inline: 32px;
   }
 
-  .donation__nav-btn {
+  .nav-logo {
+    width: 76px;
+    height: 76px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+
+  .nav-link {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--text-hero-mobile);
+    line-height: var(--leading-base);
+    color: var(--color-white);
+    text-decoration: none;
+  }
+
+  .nav-burger {
+    width: var(--icon-btn-size);
+    height: var(--icon-btn-size);
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
     border: 0;
-    border-radius: 12px;
-    padding: 10px 16px;
-    margin-top: 8px;
+    padding: 0;
     cursor: pointer;
-    font-size: var(--donation-p);
-    font-weight: var(--font-weight-medium);
+  }
+
+  .nav-burger svg {
     color: var(--color-white);
   }
 
-  /* Nav button uses accent color */
-  .donation--pink .donation__nav-btn {
-    background: var(--pink-400);
-  }
-  .donation--beigepink .donation__nav-btn {
-    background: var(--beigepink-500);
-  }
-
-  .donation__payment-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-
-  .input {
-    border: 3px solid var(--beigepink-200);
-  }
-
-  .donation__radio,
-  .donation__checkbox {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    margin-bottom: 12px;
-    font-size: var(--donation-form-text);
-  }
-
-  .donation__radio {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    user-select: none;
-    margin-top: 10px;
-  }
-
-  /* Hide native radio but keep it accessible */
-  .donation__radio-input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  /* The custom circle */
-  .donation__radio-ui {
-    width: 22px;
-    height: 22px;
-    border-radius: 5px;
-    border: 3px solid var(--beigepink-200);
-    background: transparent;
-    flex-shrink: 0;
-    position: relative;
-    transition: background-color 160ms ease, border-color 160ms ease,
-      box-shadow 160ms ease;
-  }
-
-  /* Inner dot when selected */
-  .donation__radio-input:checked + .donation__radio-ui::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    border-radius: 4px;
-    background: var(--beigepink-400);
-  }
-
-  /* makes checkbox round + colored */
-
-  .donation__thankyou-img {
-    display: block;
-    margin: 12px auto 0;
-    width: 96px;
-    height: auto;
-  }
-
-  .donation__thanks {
-    text-align: center;
-    font-size: 14px;
+  .nav-menu {
     margin-top: 12px;
+    border-radius: var(--radius-card);
+    background: var(--gradient-header);
+    border: var(--border-card) solid var(--color-border);
+    padding: 16px;
   }
-  /* Wrapper height so the line has space (matches your long flow) */
+
+  /* ------------------------------- */
+  /* FOOTER */
+  /* ------------------------------- */
+
+  .footer-pill {
+    background: var(--gradient-footer);
+    border-radius: var(--radius-3);
+    box-shadow: var(--shadow-btn);
+    padding: 28px 32px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 18px;
+  }
+
+  @media (min-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      justify-items: stretch;
+      row-gap: 0;
+      column-gap: 24px;
+    }
+  }
+
+  .footer-logo {
+    width: 90px;
+    height: 90px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+
+  .footer-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .footer-icon-link {
+    width: 64px;
+    height: 64px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    text-decoration: none;
+  }
+
+  .footer-link {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-regular);
+    font-size: 18px;
+    line-height: var(--leading-base);
+    color: var(--color-white);
+    text-decoration: underline;
+    text-underline-offset: 6px;
+  }
+
+  @media (min-width: 1024px) {
+    .footer-logo {
+      width: 76px;
+      height: 76px;
+    }
+    .footer-icon-link {
+      width: 44px;
+      height: 44px;
+    }
+    .footer-link {
+      justify-self: end;
+      align-self: center;
+    }
+  }
+
+  .footer-meta {
+    margin-top: 14px;
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-regular);
+    font-size: 12px;
+    line-height: var(--leading-base);
+    color: var(--color-white);
+    text-align: center;
+  }
+
+  /* ------------------------------- */
+  /* DECORATIVE LINES + STARS */
+  /* ------------------------------- */
+
   .line2-section {
     position: relative;
-    min-height: 191vh; /* adjust per design */
+    min-height: 191vh;
   }
 
-  /* The line is a decorative overlay */
   .line2 {
     position: absolute;
     top: 200px;
     right: 10px;
-
     height: 180vh;
     width: min(520px, 55vw);
-
     transform: rotate(15deg);
     transform-origin: top right;
-
     z-index: var(--z-decor);
   }
 
   .line3-section {
     position: relative;
-    min-height: 20vh; /* adjust to match your prototype */
+    min-height: 20vh;
   }
 
   .line3 {
     position: absolute;
     rotate: -30deg;
-    top: 0;
-    left: 20%; /* ✅ left side */
+    left: 20%;
     top: 14%;
     width: min(200px, 28vw);
     height: 120vh;
     z-index: var(--z-decor);
   }
+
   .decor-star {
     position: absolute;
     left: 6%;
@@ -478,12 +601,23 @@
     pointer-events: none;
   }
 
+  /* Option B: hide ONLY the decorative line svgs on mobile */
   svg[data-line] {
     display: none;
   }
+
   @media (min-width: 1024px) {
     svg[data-line] {
       display: block;
+    }
+  }
+
+  /* If your desktop line sections use big vh heights, make them desktop-only */
+  @media (max-width: 1023px) {
+    .line2-section,
+    .line3-section {
+      min-height: auto !important;
+      height: auto !important;
     }
   }
 
@@ -532,51 +666,44 @@
     margin-bottom: 20px;
   }
 
-  /* ===== HEROES SECTION ===== */
-  /* ===== HEROES SECTION ===== */
+  /* ------------------------------- */
+  /* HEROES SECTION */
+  /* ------------------------------- */
 
-  /* Layout: stacked by default */
   .heroes-layout {
     display: grid;
     gap: 24px;
     align-items: start;
   }
 
-  /* Card */
   .heroes-card {
     min-width: 0;
     display: flex;
     flex-direction: column;
   }
 
-  /* CTA: centered by default */
   .heroes-cta {
     display: flex;
     justify-content: center;
     margin-top: 24px;
   }
 
-  /* Images grid */
   .heroes-grid {
     min-width: 0;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
-    /* prevents images from becoming huge when stacked */
     max-width: 680px;
   }
 
-  /* Tablet: 3 columns */
   @media (min-width: 768px) {
     .heroes-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
       max-width: none;
-      /* let it breathe when side-by-side later */
     }
   }
 
-  /* 1024–1279: stacked layout (mobile style) */
   @media (min-width: 1024px) and (max-width: 1279px) {
     .heroes-layout {
       grid-template-columns: 1fr;
@@ -588,7 +715,6 @@
     }
   }
 
-  /* Wide desktop (>=1280): card left, images right */
   @media (min-width: 1280px) {
     .heroes-layout {
       grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
@@ -609,7 +735,6 @@
     }
   }
 
-  /* Tiles */
   .heroes-grid img {
     width: 100%;
     aspect-ratio: 1 / 1;
@@ -618,89 +743,9 @@
     display: block;
   }
 
-  /* Container */
-  .container-site {
-    margin-inline: auto;
-    max-width: 1600px;
-    padding-inline: 24px; /* mobile */
-  }
-
-  @media (min-width: 1024px) {
-    .container-site {
-      padding-inline: var(--space-container-desktop);
-    }
-  }
-
-  /* Grid: 6 cols mobile -> 12 cols desktop */
-  .grid-site {
-    display: grid;
-    grid-template-columns: repeat(var(--grid-cols-mobile), minmax(0, 1fr));
-    gap: var(--space-gutter);
-  }
-
-  @media (min-width: 1024px) {
-    .grid-site {
-      grid-template-columns: repeat(var(--grid-cols-desktop), minmax(0, 1fr));
-    }
-
-    .grid-desktop-cards {
-      display: grid;
-      grid-template-columns: repeat(var(--grid-cols-cards), minmax(0, 1fr));
-      gap: var(--space-gutter);
-    }
-  }
-
-  .grid-desktop-text {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-gutter);
-  }
-
-  @media (min-width: 1024px) {
-    .grid-desktop-text {
-      grid-template-columns: repeat(var(--grid-cols-text), minmax(0, 1fr));
-    }
-  }
-  /* Option B: hide ONLY the decorative line svgs on mobile */
-  svg[data-line] {
-    display: none;
-  }
-
-  @media (min-width: 1024px) {
-    svg[data-line] {
-      display: block;
-    }
-  }
-
-  /* If your desktop line sections use big vh heights, make them desktop-only */
-  @media (max-width: 1023px) {
-    .line2-section,
-    .line3-section {
-      min-height: auto !important;
-      height: auto !important;
-    }
-  }
-  /* Section spacing */
-  .section {
-    padding-block: var(--space-section-mobile);
-  }
-
-  @media (min-width: 1024px) {
-    .section {
-      padding-block: var(--space-section-desktop);
-    }
-  }
-
-  /* Card (no shadow) */
-  .card {
-    background-color: var(--color-surface);
-    border-radius: var(--radius-card);
-    padding: var(--card-padding);
-  }
-
-  .card-bordered {
-    border: var(--border-card) solid var(--color-border);
-  }
+  /* ------------------------------- */
+  /* EVENT LIST */
+  /* ------------------------------- */
 
   .event-card-list {
     display: flex;
@@ -709,316 +754,210 @@
   }
 
   /* ------------------------------- */
-  /* SHARED GLOW HOVER (header + footer) */
+  /* DONATION COMPONENT */
   /* ------------------------------- */
 
-  .glow-link {
-    transition: filter 220ms ease, transform 120ms ease;
+  .donation {
+    max-width: 28rem;
+    margin-inline: auto;
+    overflow: hidden;
+    border-radius: var(--radius-2);
+    background: var(--color-surface);
   }
 
-  .glow-link:hover {
-    filter: drop-shadow(0 0 12px var(--color-white));
-    transform: translateY(-1px);
+  .donation--pink .donation__header {
+    background: var(--pink-400);
+  }
+  .donation--beigepink .donation__header {
+    background: var(--beigepink-500);
   }
 
-  .glow-link[aria-current="page"] {
-    filter: drop-shadow(0 0 14px var(--color-white));
+  .donation__header {
+    color: var(--donation-text-color);
+    padding: 24px;
   }
 
-  /* ------------------------------- */
-  /* NAV / HEADER */
-  /* ------------------------------- */
-
-  .nav-pill {
-    background: var(--gradient-header);
-    border-radius: var(--radius-3);
-    box-shadow: var(--shadow-btn);
-    min-height: 72px;
-
+  .donation__title-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    padding-inline: 32px;
+    gap: 5px;
   }
 
-  .nav-logo {
-    width: 76px;
-    height: 76px;
-    display: grid;
-    place-items: center;
-    flex-shrink: 0;
+  .donation__title {
+    font-size: var(--donation-h1);
+    margin: 0;
   }
 
-  .nav-link {
-    font-family: var(--font-sans);
-    font-weight: var(--font-weight-regular);
-    font-size: var(--text-hero-mobile);
-    line-height: var(--leading-base);
-    color: var(--color-white);
-    text-decoration: none;
-  }
-
-  .nav-burger {
-    width: var(--icon-btn-size);
-    height: var(--icon-btn-size);
-    border-radius: 9999px;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    background: transparent;
-    border: 0;
-    padding: 0;
-
-    cursor: pointer;
-  }
-
-  .nav-burger svg {
-    color: var(--color-white);
-  }
-
-  .nav-menu {
-    margin-top: 12px;
-    border-radius: var(--radius-card);
-    background: var(--gradient-header);
-    border: var(--border-card) solid var(--color-border);
-    padding: 16px;
-  }
-
-  /* ------------------------------- */
-  /* FOOTER */
-  /* ------------------------------- */
-
-  .footer-pill {
-    background: var(--gradient-footer);
-    border-radius: var(--radius-3);
-    box-shadow: var(--shadow-btn);
-    padding: 28px 32px;
-  }
-
-  /* Mobile: stacked + centered */
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    row-gap: 18px;
-  }
-
-  /* Desktop: logo | icons | policies */
   @media (min-width: 1024px) {
-    .footer-grid {
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      justify-items: stretch;
-      row-gap: 0;
-      column-gap: 24px;
+    .donation__title {
+      font-size: var(--donation-h1-desktop);
+      margin: 0;
     }
   }
 
-  .footer-logo {
-    width: 90px;
-    height: 90px;
-    display: grid;
-    place-items: center;
-    flex-shrink: 0;
-  }
-
-  /* Icons */
-  .footer-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 22px;
-  }
-
-  .footer-icon-link {
-    width: 64px;
-    height: 64px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-white);
-    text-decoration: none;
-  }
-
-  /* Policies link */
-  .footer-link {
-    font-family: var(--font-sans);
-    font-weight: var(--font-weight-regular);
-    font-size: 18px;
-    line-height: var(--leading-base);
-    color: var(--color-white);
-    text-decoration: underline;
-    text-underline-offset: 6px;
-  }
-
-  /* Desktop sizing */
-  @media (min-width: 1024px) {
-    .footer-logo {
-      width: 76px;
-      height: 76px;
-    }
-
-    .footer-icon-link {
-      width: 44px;
-      height: 44px;
-    }
-
-    .footer-link {
-      justify-self: end;
-      align-self: center;
-    }
-  }
-
-  /* Small text */
-  .footer-meta {
-    margin-top: 14px;
-    font-family: var(--font-sans);
-    font-weight: var(--font-weight-regular);
-    font-size: 12px;
-    line-height: var(--leading-base);
-    color: var(--color-white);
-    text-align: center;
-  }
-
-  /* ------------------------------- */
-  /* BUTTONS */
-  /* ------------------------------- */
-
-  .btn-base {
-    font-family: var(--font-btn);
-    font-weight: var(--font-weight-btn);
-    font-size: var(--text-btn);
-    line-height: var(--leading-base);
-    border-radius: var(--radius-btn);
-    padding: 12px 20px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    text-decoration: none;
-    white-space: nowrap;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-
-    /* shadow only on buttons */
-    box-shadow: var(--shadow-btn);
-    transition: transform 120ms ease, box-shadow 200ms ease;
-  }
-
-  /* Icon buttons should not use the default padding */
-  .btn-base.icon-btn {
-    padding: 0;
-  }
-
-  .btn-base:hover {
-    box-shadow: var(--shadow-btn-hover);
-  }
-
-  .btn-base:active {
-    transform: scale(0.98);
-    box-shadow: var(--shadow-btn);
-  }
-
-  /* Variants: set text color and use layered backgrounds */
-  .btn-grad-1,
-  .btn-grad-2,
-  .btn-grad-3 {
-    color: var(--btn-text);
-    background: none; /* handled by pseudo elements */
-  }
-
-  /* Two background layers: ::before = gradient, ::after = solid hover */
-  .btn-grad-1::before,
-  .btn-grad-2::before,
-  .btn-grad-3::before,
-  .btn-grad-1::after,
-  .btn-grad-2::after,
-  .btn-grad-3::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    transition: opacity 320ms ease;
-  }
-
-  /* Default: show gradient */
-  .btn-grad-1::before {
-    background: var(--gradient-pink-orange);
-    opacity: 1;
-  }
-  .btn-grad-2::before {
-    background: var(--gradient-orange-beigepink);
-    opacity: 1;
-  }
-  .btn-grad-3::before {
-    background: var(--gradient-blue-pink);
-    opacity: 1;
-  }
-
-  /* Default: hide solid */
-  .btn-grad-1::after {
-    background-color: var(--btn-grad-1-hover);
-    opacity: 0;
-  }
-  .btn-grad-2::after {
-    background-color: var(--btn-grad-2-hover);
-    opacity: 0;
-  }
-  .btn-grad-3::after {
-    background-color: var(--btn-grad-3-hover);
-    opacity: 0;
-  }
-
-  /* Hover: fade gradient out, solid in */
-  .btn-grad-1:hover::before,
-  .btn-grad-2:hover::before,
-  .btn-grad-3:hover::before {
-    opacity: 0;
-  }
-
-  .btn-grad-1:hover::after,
-  .btn-grad-2:hover::after,
-  .btn-grad-3:hover::after {
-    opacity: 1;
-  }
-
-  /* Icon button sizes */
-  .icon-btn-sm {
-    width: var(--icon-btn-size-sm);
-    height: var(--icon-btn-size-sm);
-  }
-
-  .icon-btn-md {
-    width: var(--icon-btn-size-md);
-    height: var(--icon-btn-size-md);
-  }
-
-  .icon-btn-lg {
-    width: var(--icon-btn-size-lg);
-    height: var(--icon-btn-size-lg);
-  }
-
-  /* Remove padding from icon buttons */
-  .btn-base.icon-btn {
-    padding: 0;
-  }
-
-  /* Icon scaling inside icon buttons */
-  .icon-btn img,
-  .icon-btn svg {
-    width: 70%;
-    height: 70%;
+  .donation__title-icon {
+    width: 48px;
+    height: 48px;
     display: block;
     flex-shrink: 0;
   }
 
+  .donation__subtitle {
+    margin-top: 8px;
+  }
+
+  .donation__body {
+    padding: 24px;
+    display: grid;
+    gap: 16px;
+  }
+
+  .donation__step-title {
+    text-align: center;
+    font-weight: var(--font-weight-medium);
+    margin-bottom: 30px;
+    font-size: var(--donation-p);
+  }
+
+  .donation__amounts {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    font-size: var(--donation-p);
+  }
+
+  .donation__amount-btn {
+    border: 3px solid var(--beigepink-200);
+    border-radius: 12px;
+    padding: 10px 14px;
+    background: transparent;
+    cursor: pointer;
+    font-size: var(--donation-form-text);
+  }
+
+  .donation__amount-btn.is-selected {
+    background-color: var(--beigepink-200);
+    border: 4px solid var(--beigepink-400);
+    opacity: 1;
+  }
+
+  .donation__field {
+    margin-bottom: 12px;
+  }
+
+  .donation__input {
+    width: 100%;
+    border: 3px solid var(--beigepink-200);
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin-bottom: 30px;
+    font-size: var(--donation-form-text);
+    color: var(--donation-text-color);
+  }
+
+  .donation__nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 8px;
+    padding-top: 20px;
+  }
+
+  .donation__nav-btn {
+    border: 0;
+    border-radius: 12px;
+    padding: 10px 16px;
+    margin-top: 8px;
+    cursor: pointer;
+    font-size: var(--donation-p);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-white);
+  }
+
+  .donation--pink .donation__nav-btn {
+    background: var(--pink-400);
+  }
+  .donation--beigepink .donation__nav-btn {
+    background: var(--beigepink-500);
+  }
+
+  .donation__payment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .input {
+    border: 3px solid var(--beigepink-200);
+  }
+
+  /* Radio + checkbox layout (kept both) */
+  .donation__radio,
+  .donation__checkbox {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    font-size: var(--donation-form-text);
+  }
+
+  /* Custom radio styling */
+  .donation__radio {
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+    margin-top: 10px;
+  }
+
+  .donation__radio-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .donation__radio-ui {
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    border: 3px solid var(--beigepink-200);
+    background: transparent;
+    flex-shrink: 0;
+    position: relative;
+    transition: background-color 160ms ease, border-color 160ms ease,
+      box-shadow 160ms ease;
+  }
+
+  .donation__radio-input:checked + .donation__radio-ui::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: 4px;
+    background: var(--beigepink-400);
+  }
+
+  /* makes checkbox round + colored */
+  /* (kept placeholder comment) */
+
+  .donation__thankyou-img {
+    display: block;
+    margin: 12px auto 0;
+    width: 96px;
+    height: 100px;
+  }
+
+  .donation__thanks {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 12px;
+  }
+
   /* ------------------------------- */
-  /* DONATION TYPOGRAPHY */
+  /* TYPOGRAPHY CLASSES */
   /* ------------------------------- */
 
   .t-donation-h1 {
@@ -1061,10 +1000,6 @@
     color: var(--color-text);
   }
 
-  /* ------------------------------- */
-  /* IDCARD TYPOGRAPHY */
-  /* ------------------------------- */
-
   .t-idcard-h1 {
     font-family: var(--font-display);
     font-weight: var(--font-weight-bold);
@@ -1096,6 +1031,7 @@
     line-height: var(--leading-base);
     color: var(--eventcard-text-color);
   }
+
   .t-eventcard-h2 {
     font-family: var(--font-display);
     font-weight: var(--font-weight-medium);
@@ -1112,18 +1048,17 @@
     color: var(--eventcard-text-color);
   }
 
-  /* ================================= */
+  /* ------------------------------- */
   /* FIXED REFERENCE FOR STAR + IMAGE */
-  /* ================================= */
+  /* ------------------------------- */
 
   .star-wrap {
     position: relative;
-    width: 400px; /* 🔒 fixed visual anchor */
+    width: 400px;
     height: 320px;
-    margin-inline: auto; /* center in column */
+    margin-inline: auto;
   }
 
-  /* Foreground image */
   .girl-img {
     position: relative;
     z-index: 2;
@@ -1132,10 +1067,9 @@
     display: block;
   }
 
-  /* Star background */
   .star-bg {
     position: absolute;
-    inset: 0; /* 👈 locks center */
+    inset: 0;
     margin: auto;
     width: 400px;
     z-index: 1;
@@ -1143,7 +1077,6 @@
     opacity: 0.9;
   }
 
-  /* Optional: mobile tuning */
   @media (max-width: 1023px) {
     .star-wrap {
       width: 300px;
@@ -1161,13 +1094,13 @@
 /* -------------------------------- */
 
 @layer utilities {
-  /* Typography */
   .t-h1 {
     font-family: var(--font-display);
     font-weight: var(--font-weight-bold);
     font-size: var(--text-h1-mobile);
     line-height: var(--leading-base);
   }
+
   @media (min-width: 1024px) {
     .t-h1 {
       font-size: var(--text-h1-desktop);
@@ -1180,6 +1113,7 @@
     font-size: var(--text-h2-mobile);
     line-height: var(--leading-base);
   }
+
   @media (min-width: 1024px) {
     .t-h2 {
       font-size: var(--text-h2-desktop);
@@ -1192,6 +1126,7 @@
     font-size: var(--text-hero-mobile);
     line-height: var(--leading-base);
   }
+
   @media (min-width: 1024px) {
     .t-hero {
       font-size: var(--text-hero-desktop);
@@ -1203,18 +1138,17 @@
     font-size: var(--text-p-mobile);
     line-height: var(--leading-base);
   }
+
   @media (min-width: 1024px) {
     .t-p {
       font-size: var(--text-p1-desktop);
     }
   }
 
-  /* Readability */
   .prose-max {
     max-width: var(--max-prose);
   }
 
-  /* Gradient role utilities */
   .bg-gradient-header {
     background: var(--gradient-header);
   }
@@ -1223,7 +1157,6 @@
     background: var(--gradient-footer);
   }
 
-  /* Layer helpers */
   .z-decor {
     z-index: var(--z-decor);
   }
