@@ -34,23 +34,26 @@ import MainLayout from "../layouts/MainLayout.astro";
           <div class="col-span-12 lg:col-span-12 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <DonationCard
-                id="one-time"
-                title="Engangsdonation"
-                subtitle="Støt vores arbejde med et valgfrit beløb."
-                accent="pink"
-                amounts={[25,50,100]}
-                flow={['amount','info','method','payment','terms','thankyou']}
-              
-              />
+              title="Engangsdonation"
+              subtitle="Med din støtte kan vi gøre hjemvejen tryggere."
+              accent="pink"
+              titleIconSrc="/heart.svg"
+              titleIconAlt=""
+              amounts={[25, 50, 100, 250]}
+              thankyouImgSrc="/girlonphone.svg"
+              thankyouImgAlt="Illustration af fællesskab"
+            />
 
-              <DonationCard
-                id="monthly"
-                title="Månedlig støtte"
-                subtitle="Gør en varig forskel — støtte hver måned."
-                accent="beigepink"
-                amounts={[25,50,100]}
-                flow={['amount','info','method','payment','terms','thankyou']}
-              />
+            <DonationCard
+            title="Månedlig støtte"
+            subtitle="Med din støtte kan vi gøre hjemvejen tryggere."
+            accent="beigepink"
+            titleIconSrc="/infinity.svg"
+            titleIconAlt=""
+            amounts={[25, 50, 100, 250]}
+            thankyouImgSrc="/girlsonphone.svg"
+            thankyouImgAlt="Illustration af fællesskab"
+          />
             </div>
           </div>
         </div>

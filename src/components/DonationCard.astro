@@ -1,46 +1,61 @@
-
 ---
 const {
-  id = `donation-${Math.random().toString(36).slice(2,8)}`,
+  id = `donation-${Math.random().toString(36).slice(2, 8)}`,
   title = "Engangsdonation",
   subtitle = "Støt vores arbejde med et valgfrit beløb.",
   accent = "pink",
   amounts = [25, 50, 100],
-  flow = ["amount","info","method","payment","terms","thankyou"],
+  flow = ["amount", "info", "method", "payment", "terms", "thankyou"],
+
+  // NEW: icon next to title
+  titleIconSrc,
+  titleIconAlt = "",
+  titleIconClass = "donation__title-icon",
+
+  // NEW: image in thankyou step
+  thankyouImgSrc = "/girls.svg",
+  thankyouImgAlt = "",
+  thankyouImgClass = "donation__thankyou-img",
 } = Astro.props;
 
-const ACCENT_HEX: Record<string,string> = {
-  pink: "#ff58b0",
-  beigepink: "#e80273",
-};
-
-const accentColor = ACCENT_HEX[accent] || ACCENT_HEX.pink;
-const buttonStyle = `background-color: ${accentColor}; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;`;
-const headerStyle = `background-color: ${accentColor}; color: white; padding: 1.5rem;`;
+const accentClass = accent === "beigepink" ? "donation--beigepink" : "donation--pink";
 ---
+
 <div
   id={id}
-  class="max-w-md mx-auto overflow-hidden rounded-xl bg-white"
+  class={`donation ${accentClass}`}
   data-donation
   data-flow={JSON.stringify(flow)}
 >
-  <header style={headerStyle}>
-    <h2 class="t-donation-h2">{title}</h2>
-    <p class="t-donation-p">{subtitle}</p>
+  <header class="donation__header">
+    <div class="donation__title-row">
+      <h2 class="t-donation-h1 donation__title">{title}</h2>
+
+      {titleIconSrc && (
+        <img
+          src={titleIconSrc}
+          alt={titleIconAlt}
+          class={titleIconClass}
+          aria-hidden={titleIconAlt === "" ? "true" : undefined}
+        />
+      )}
+    </div>
+
+    <p class="t-donation-p donation__subtitle">{subtitle}</p>
   </header>
 
-  <div class="p-6 space-y-4">
-    {flow.map(step => (
+  <div class="donation__body">
+    {flow.map((step) => (
       <section class="step hidden" data-step={step}>
         {step === "amount" && (
           <>
-            <h4 class="text-center font-semibold mb-4">Vælg beløb</h4>
+            <h4 class="donation__step-title">Vælg beløb</h4>
 
-            <div class="flex justify-center gap-3 mb-4">
-              {amounts.map(a => (
+            <div class="donation__amounts">
+              {amounts.map((a) => (
                 <button
                   type="button"
-                  class="amount-btn rounded-lg border px-4 py-2 text-sm"
+                  class="donation__amount-btn"
                   data-amount={a}
                 >
                   {a} kr
@@ -48,12 +63,11 @@ const headerStyle = `background-color: ${accentColor}; color: white; padding: 1.
               ))}
             </div>
 
-            <!-- valgfrit beløb -->
-            <div class="mb-4">
+            <div class="donation__field">
               <label class="sr-only" for={`custom-${id}`}>Valgfrit beløb</label>
               <input
                 id={`custom-${id}`}
-                class="custom-amount w-full rounded border p-2"
+                class="donation__input custom-amount"
                 type="number"
                 min="1"
                 placeholder="Valgfrit beløb (kr)"
@@ -61,146 +75,184 @@ const headerStyle = `background-color: ${accentColor}; color: white; padding: 1.
               />
             </div>
 
-            <div class="flex justify-between mt-2">
-              <button class="prev hidden" style={buttonStyle}>← Tilbage</button>
-              <button class="next" style={buttonStyle}>{step === "terms" ? "Donér" : "Næste →"}</button>
+            <div class="donation__nav">
+              <button class="prev hidden donation__nav-btn" type="button">← Tilbage</button>
+              <button class="next donation__nav-btn" type="button">Næste →</button>
             </div>
           </>
         )}
 
         {step === "info" && (
           <>
-            <h4 class="text-center font-semibold mb-4">Information</h4>
-            <input class="w-full rounded border p-2 mb-2" placeholder="Fornavn" />
-            <input class="w-full rounded border p-2 mb-2" placeholder="Efternavn" />
-            <input class="w-full rounded border p-2 mb-4" placeholder="Email" />
-            <div class="flex justify-between">
-              <button class="prev hidden" style={buttonStyle}>← Tilbage</button>
-              <button class="next" style={buttonStyle}>Næste →</button>
+            <h4 class="donation__step-title">Information</h4>
+
+            <input class="donation__input w-full" placeholder="Fornavn" />
+            <input class="donation__input w-full" placeholder="Efternavn" />
+            <input class="donation__input w-full" placeholder="Email" />
+
+            <div class="donation__nav">
+              <button class="prev hidden donation__nav-btn" type="button">← Tilbage</button>
+              <button class="next donation__nav-btn" type="button">Næste →</button>
             </div>
           </>
         )}
 
-        {step === "method" && (
-          <>
-            <h4 class="text-center font-semibold mb-4">Betalingsmetode</h4>
-            <label class="block mb-2"><input type="radio" name={id} /> MobilePay</label>
-            <label class="block mb-4"><input type="radio" name={id} /> Kort</label>
-            <div class="flex justify-between">
-              <button class="prev hidden" style={buttonStyle}>← Tilbage</button>
-              <button class="next" style={buttonStyle}>Næste →</button>
-            </div>
-          </>
-        )}
+{step === "method" && (
+  <>
+    <h4 class="donation__step-title">Betalingsmetode</h4>
+
+    <label class="donation__radio">
+      <input class="donation__radio-input" type="radio" name={`${id}-method`} value="mobilepay" />
+      <span class="donation__radio-ui" aria-hidden="true"></span>
+      <span class="donation__radio-text">MobilePay</span>
+    </label>
+
+    <label class="donation__radio">
+      <input class="donation__radio-input" type="radio" name={`${id}-method`} value="card" />
+      <span class="donation__radio-ui" aria-hidden="true"></span>
+      <span class="donation__radio-text">Kort</span>
+    </label>
+
+    <div class="donation__nav">
+      <button class="prev hidden donation__nav-btn" type="button">← Tilbage</button>
+      <button class="next donation__nav-btn" type="button">Næste →</button>
+    </div>
+  </>
+)}
 
         {step === "payment" && (
           <>
-            <h4 class="text-center font-semibold mb-4">Betaling</h4>
-            <input class="w-full rounded border p-2 mb-2" placeholder="Kortnummer" />
-            <div class="grid grid-cols-3 gap-2 mb-4">
-              <input class="rounded border p-2" placeholder="MM/ÅÅ" />
-              <input class="rounded border p-2" placeholder="CVC" />
-              <input class="rounded border p-2" placeholder="Navn på kort" />
+            <h4 class="donation__step-title">Betaling</h4>
+
+            <input class="donation__input w-full" placeholder="Kortnummer" />
+
+            <div class="donation__payment-grid">
+              <input class="donation__input" placeholder="MM/ÅÅ" />
+              <input class="donation__input" placeholder="CVC" />
+              <input class="donation__input" placeholder="Navn på kort" />
             </div>
-            <div class="flex justify-between">
-              <button class="prev" style={buttonStyle}>← Tilbage</button>
-              <button class="next" style={buttonStyle}>Næste →</button>
+
+            <div class="donation__nav">
+              <button class="prev donation__nav-btn" type="button">← Tilbage</button>
+              <button class="next donation__nav-btn" type="button">Næste →</button>
             </div>
           </>
         )}
 
         {step === "terms" && (
           <>
-            <h4 class="text-center font-semibold mb-4">Betingelser</h4>
-            <label class="block mb-4"><input type="checkbox" /> Opret en konto for at administrere mine donationer og donér hurtigere næste gang. </label>
-            <label class="block mb-6"><input type="checkbox" /> Denne formular er beskyttet af reCAPTCHA, og Googles privatlivspolitik og servicevilkår gælder. </label>
-            <div class="flex justify-between">
-              <button class="prev" style={buttonStyle}>← Tilbage</button>
-              <button class="next" style={buttonStyle}>Donér</button>
-            </div>
+            <h4 class="donation__step-title">Betingelser</h4>
+
+<label class="donation__radio">
+  <input type="checkbox" class="donation__radio-input" />
+  <span class="donation__radio-ui" aria-hidden="true"></span>
+  <span>
+    Opret en konto for at administrere mine donationer og donér hurtigere næste gang.
+  </span>
+</label>
+
+<label class="donation__radio">
+  <input type="checkbox" class="donation__radio-input" />
+  <span class="donation__radio-ui" aria-hidden="true"></span>
+  <span>
+    Denne formular er beskyttet af reCAPTCHA, og Googles privatlivspolitik og servicevilkår gælder.
+  </span>
+</label>
+
+<div class="donation__nav">
+  <button class="prev donation__nav-btn" type="button">← Tilbage</button>
+  <button class="next donation__nav-btn" type="button">Donér</button>
+</div>
           </>
         )}
 
         {step === "thankyou" && (
           <>
-            <h4 class="text-center font-semibold mb-2">Tak for din donation!</h4>
-            <img src="/girls.svg" alt="girls illustration" class="mx-auto mb-4 w-24" />
-            <p class="text-center text-sm">Du støtter ikke bare vores hotline - du støtter retten til tryghed i det offentlige rum.
-Tak fordi du handler, når det betyder noget.</p>
+            <h4 class="donation__step-title">Tak for din donation!</h4>
+
+            <img
+              src={thankyouImgSrc}
+              alt={thankyouImgAlt}
+              class={thankyouImgClass}
+              aria-hidden={thankyouImgAlt === "" ? "true" : undefined}
+            />
+
+            <p class="t-donation-form-p donation__thanks">
+              Du støtter ikke bare vores hotline - du støtter retten til tryghed i det offentlige rum.
+              Tak fordi du handler, når det betyder noget.
+            </p>
           </>
         )}
       </section>
     ))}
   </div>
 
-<script type="module">
-  document.querySelectorAll("[data-donation]").forEach(card => {
-    const flow = (() => {
-      try {
-        return JSON.parse(card.dataset.flow || '["amount","info","method","payment","terms","thankyou"]');
-      } catch (err) {
-        return ["amount","info","method","payment","terms","thankyou"];
-      }
-    })();
+  <script type="module">
+    document.querySelectorAll("[data-donation]").forEach((card) => {
+      const flow = (() => {
+        try {
+          return JSON.parse(card.dataset.flow || '["amount","info","method","payment","terms","thankyou"]');
+        } catch (err) {
+          return ["amount","info","method","payment","terms","thankyou"];
+        }
+      })();
 
-    const steps = flow.map(s => card.querySelector(`[data-step="${s}"]`)).filter(Boolean);
-    if (!steps.length) return;
-    let i = 0;
+      const steps = flow.map((s) => card.querySelector(`[data-step="${s}"]`)).filter(Boolean);
+      if (!steps.length) return;
 
-    const prevButtons = Array.from(card.querySelectorAll('.prev'));
-    const nextButtons = Array.from(card.querySelectorAll('.next'));
+      let i = 0;
 
-    const show = () => {
-      steps.forEach((s, idx) => s.classList.toggle("hidden", idx !== i));
-      // hide prev on first step; show otherwise
-      prevButtons.forEach(btn => btn.classList.toggle("hidden", i === 0));
-      // center next only when prev is hidden (first step)
-      nextButtons.forEach(btn => btn.classList.toggle("mx-auto", i === 0));
-    };
+      const prevButtons = Array.from(card.querySelectorAll(".prev"));
+      const nextButtons = Array.from(card.querySelectorAll(".next"));
 
-    // handle clicks (buttons) and amount selection
-    card.addEventListener("click", e => {
-      const amtBtn = e.target.closest('.amount-btn');
-      if (amtBtn && card.contains(amtBtn)) {
-        // clear previous selection (match the class we add)
-        card.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('opacity-60'));
-        // add selection class
-        amtBtn.classList.add('opacity-60');
-        // clear custom input
-        const custom = card.querySelector('.custom-amount');
-        if (custom) custom.value = '';
-        card.dataset.selectedAmount = amtBtn.dataset.amount;
-        return;
-      }
+      const show = () => {
+        steps.forEach((s, idx) => s.classList.toggle("hidden", idx !== i));
+        prevButtons.forEach((btn) => btn.classList.toggle("hidden", i === 0));
+        nextButtons.forEach((btn) => btn.classList.toggle("mx-auto", i === 0));
+      };
 
-      if (e.target.closest('.next')) {
-        if (i < steps.length - 1) i++;
-        show();
-        return;
-      }
+      card.addEventListener("click", (e) => {
+        const amtBtn = e.target.closest(".donation__amount-btn");
+        if (amtBtn && card.contains(amtBtn)) {
+          card.querySelectorAll(".donation__amount-btn").forEach((b) => b.classList.remove("is-selected"));
+          amtBtn.classList.add("is-selected");
 
-      if (e.target.closest('.prev')) {
-        if (i > 0) i--;
-        show();
-        return;
-      }
-    });
+          const custom = card.querySelector(".custom-amount");
+          if (custom) custom.value = "";
 
-    // custom amount input handling (remove same selection class)
-    card.querySelectorAll('.custom-amount').forEach(input => {
-      input.addEventListener('input', () => {
-        card.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('opacity-60'));
-        if (input.value && Number(input.value) > 0) {
-          card.dataset.selectedAmount = input.value;
-        } else {
-          delete card.dataset.selectedAmount;
+          card.dataset.selectedAmount = amtBtn.dataset.amount;
+          return;
+        }
+
+        if (e.target.closest(".next")) {
+          if (i < steps.length - 1) i++;
+          show();
+          return;
+        }
+
+        if (e.target.closest(".prev")) {
+          if (i > 0) i--;
+          show();
+          return;
         }
       });
-      input.addEventListener('focus', () => {
-        card.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('opacity-60'));
-      });
-    });
 
-    show();
-  });
-</script>
+      card.querySelectorAll(".custom-amount").forEach((input) => {
+        input.addEventListener("input", () => {
+          card.querySelectorAll(".donation__amount-btn").forEach((b) => b.classList.remove("is-selected"));
+          if (input.value && Number(input.value) > 0) {
+            card.dataset.selectedAmount = input.value;
+          } else {
+            delete card.dataset.selectedAmount;
+          }
+        });
+
+        input.addEventListener("focus", () => {
+          card.querySelectorAll(".donation__amount-btn").forEach((b) => b.classList.remove("is-selected"));
+        });
+      });
+
+      show();
+    });
+  </script>
+</div>

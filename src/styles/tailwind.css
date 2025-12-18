@@ -134,11 +134,23 @@
   /* -------------------------------- */
   /* GRADIENTS */
   /* -------------------------------- */
-  --gradient-pink-orange: linear-gradient(90deg, var(--pink-400) 0%, var(--orange-400) 100%);
+  --gradient-pink-orange: linear-gradient(
+    90deg,
+    var(--pink-400) 0%,
+    var(--orange-400) 100%
+  );
 
-  --gradient-orange-beigepink: linear-gradient(90deg, var(--orange-400) 0%, var(--beigepink-200) 100%);
+  --gradient-orange-beigepink: linear-gradient(
+    90deg,
+    var(--orange-400) 0%,
+    var(--beigepink-200) 100%
+  );
 
-  --gradient-blue-pink: linear-gradient(90deg, var(--blue-300) 0%, var(--pink-400) 100%);
+  --gradient-blue-pink: linear-gradient(
+    90deg,
+    var(--blue-300) 0%,
+    var(--pink-400) 100%
+  );
 
   /* Header + Footer use SAME gradient */
   --gradient-header: var(--gradient-pink-orange);
@@ -160,10 +172,10 @@
   --donation-text-color: var(--color-white);
 
   /* Desktop sizes from Figma (150% line-height) */
-  --donation-h1: 40px;
+  --donation-h1: 30px;
   --donation-h2: 36px;
-  --donation-p: 24px;
-  --donation-form-text: 30px;
+  --donation-p: 22px;
+  --donation-form-text: 20px;
   --donation-form-text-p: 20px;
 
   /* -------------------------------- */
@@ -213,6 +225,206 @@
 /* -------------------------------- */
 
 @layer components {
+  /* ------------------------------- */
+  /* DONATION COMPONENT */
+  /* ------------------------------- */
+
+  .donation {
+    max-width: 28rem;
+    margin-inline: auto;
+    overflow: hidden;
+    border-radius: var(--radius-2);
+    background: var(--color-surface);
+  }
+
+  /* Accent variants (no inline styles) */
+  .donation--pink .donation__header {
+    background: var(--pink-400);
+  }
+  .donation--beigepink .donation__header {
+    background: var(--beigepink-500);
+  }
+
+  .donation__header {
+    color: var(--donation-text-color);
+
+    padding: 24px;
+  }
+
+  .donation__title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .donation__title {
+    font-size: var(--donation-h1);
+    margin: 0;
+  }
+
+  .donation__title-icon {
+    width: 48px;
+    height: 48px;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .donation__subtitle {
+    margin-top: 8px;
+  }
+
+  .donation__body {
+    padding: 24px;
+    display: grid;
+    gap: 16px;
+  }
+
+  .donation__step-title {
+    text-align: center;
+    font-weight: var(--font-weight-medium);
+    margin-bottom: 30px;
+    font-size: var(--donation-p);
+  }
+
+  .donation__amounts {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    font-size: var(--donation-p);
+  }
+
+  .donation__amount-btn {
+    border: 3px solid var(--beigepink-200);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-size: 14px;
+    background: transparent;
+    cursor: pointer;
+    font-size: var(--donation-form-text);
+  }
+
+  .donation__amount-btn.is-selected {
+    background-color: var(--beigepink-200); /* light pink fill */
+    border: 4px solid var(--beigepink-400); /* darker pink border */
+    opacity: 1; /* IMPORTANT: remove fade */
+  }
+
+  .donation__field {
+    margin-bottom: 12px;
+  }
+
+  .donation__input {
+    width: 100%;
+    border: 3px solid var(--beigepink-200);
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin-bottom: 30px;
+    font-size: var(--donation-form-text);
+    color: var(--donation-text-color);
+  }
+
+  .donation__nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 8px;
+    padding-top: 20px;
+  }
+
+  .donation__nav-btn {
+    border: 0;
+    border-radius: 12px;
+    padding: 10px 16px;
+    margin-top: 8px;
+    cursor: pointer;
+    font-size: var(--donation-p);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-white);
+  }
+
+  /* Nav button uses accent color */
+  .donation--pink .donation__nav-btn {
+    background: var(--pink-400);
+  }
+  .donation--beigepink .donation__nav-btn {
+    background: var(--beigepink-500);
+  }
+
+  .donation__payment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .input {
+    border: 3px solid var(--beigepink-200);
+  }
+
+  .donation__radio,
+  .donation__checkbox {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    font-size: var(--donation-form-text);
+  }
+
+  .donation__radio {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+    margin-top: 10px;
+  }
+
+  /* Hide native radio but keep it accessible */
+  .donation__radio-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* The custom circle */
+  .donation__radio-ui {
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    border: 3px solid var(--beigepink-200);
+    background: transparent;
+    flex-shrink: 0;
+    position: relative;
+    transition: background-color 160ms ease, border-color 160ms ease,
+      box-shadow 160ms ease;
+  }
+
+  /* Inner dot when selected */
+  .donation__radio-input:checked + .donation__radio-ui::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: 4px;
+    background: var(--beigepink-400);
+  }
+
+  /* makes checkbox round + colored */
+
+  .donation__thankyou-img {
+    display: block;
+    margin: 12px auto 0;
+    width: 96px;
+    height: auto;
+  }
+
+  .donation__thanks {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 12px;
+  }
   /* Wrapper height so the line has space (matches your long flow) */
   .line2-section {
     position: relative;
@@ -839,7 +1051,7 @@
     font-weight: var(--font-weight-regular);
     font-size: var(--donation-form-text-p);
     line-height: var(--leading-base);
-    color: var(--donation-text-color);
+    color: var(--color-text);
   }
 
   /* ------------------------------- */
@@ -927,12 +1139,12 @@
   /* Optional: mobile tuning */
   @media (max-width: 1023px) {
     .star-wrap {
-      width: 400px;
+      width: 300px;
       height: 280px;
     }
 
     .star-bg {
-      width: 400px;
+      width: 300px;
     }
   }
 }
