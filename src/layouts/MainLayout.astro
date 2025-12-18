@@ -20,6 +20,13 @@ const { title } = Astro.props;
 		<slot />
 
 		<Footer></Footer>
-			
+		<script>
+			if (
+			  !localStorage.getItem("siteAccess") &&
+			  window.location.pathname !== "/login"
+			) {
+			  window.location.href = "/login";
+			}
+		  </script>
 	</body>
 </html>

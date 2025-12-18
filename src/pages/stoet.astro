@@ -4,36 +4,32 @@ import MainLayout from "../layouts/MainLayout.astro";
 ---
 <MainLayout title="Støt">
   <main class="relative">
+    <section class="section relative z-10">
+      <div class="container-site grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Venstre side: intro-tekst -->
+        <div>
+          <h1 data-inview="text" class="title t-h1">Vil du støtte os?</h1>
+          <p data-inview="text" class="t-p">
+            Når du donerer, er du med til at gøre en forskel her og nu.
+            Din støtte går direkte til hotlinen og vores arbejde for tryghed, nærvær og fællesskab.
+          </p>
+        </div>
+      </div>
+    </section>
 
-<section class="section relative z-10">
-  <div class="container-site grid grid-cols-1 lg:grid-cols-2 gap-6">
-
-    <!-- Venstre side: intro-tekst -->
-    <div>
-      <h1 data-inview="text"class="title t-h1">Vil du støtte os?</h1>
-      <p data-inview="text"class="t-p">
-        Når du donerer, er du med til at gøre en forskel her og nu.
-        Din støtte går direkte til hotlinen og vores arbejde for tryghed, nærvær og fællesskab.
-      </p>
-    </div>
-  </div>
-</section>
-
-
-        <!-- bølgelinje -->
-  <img
-    src="/line.svg"
-    alt="linje"
-    class="md:block absolute top-35 md:-top-25 w-full pointer-events-none"
-  />
+    <!-- bølgelinje -->
+    <img
+      src="/line.svg"
+      alt="linje"
+      class="md:block absolute top-35 md:-top-25 w-full pointer-events-none"
+    />
 
     <!-- Donation-sektion -->
     <section id="not-alone-to-arrive" class="section relative overflow-hidden z-10">
       <div class="container-site">
         <div class="grid-site">
           <div class="col-span-full lg:col-start-1 lg:col-span-6">
-
-              <DonationCard
+            <DonationCard
               title="Engangsdonation"
               subtitle="Med din støtte kan vi gøre hjemvejen tryggere."
               accent="pink"
@@ -43,9 +39,9 @@ import MainLayout from "../layouts/MainLayout.astro";
               thankyouImgSrc="/girlonphone.svg"
               thankyouImgAlt="Illustration af fællesskab"
             />
-            </div>
-            <div class="col-span-full lg:col-start-7 lg:col-span-6">
-              <DonationCard
+          </div>
+          <div class="col-span-full lg:col-start-7 lg:col-span-6">
+            <DonationCard
               title="Månedlig støtte"
               subtitle="Med din støtte kan vi gøre hjemvejen tryggere."
               accent="beigepink"
@@ -55,7 +51,6 @@ import MainLayout from "../layouts/MainLayout.astro";
               thankyouImgSrc="/girlsonphone.svg"
               thankyouImgAlt="Illustration af fællesskab"
             />
-            </div>
           </div>
         </div>
       </div>
@@ -70,24 +65,28 @@ import MainLayout from "../layouts/MainLayout.astro";
       />
     </div>
 
-<section class="section relative z-10 mb-15">
-  <div class="container-site relative">
-    <div class="max-w-4xl text-left">
-      <h2 data-inview="text"class="title t-h2">Helt præcist går din donation til…</h2>
-      <p data-inview="text"class="t-p">
-        Drift af telefonlinjen og vores chat<br>
-        Rekruttering og oplæring af frivillige<br>
-        Support og supervision<br>
-        Kommunikation og markedsføring, så flere kender til hjælpen<br>
-      </p>
-    </div>
+    <section class="section relative z-10 mb-15">
+      <div class="container-site relative">
+        <div class="max-w-4xl text-left">
+          <h2 data-inview="text" class="title t-h2">Helt præcist går din donation til…</h2>
+          <p data-inview="text" class="t-p">
+            Drift af telefonlinjen og vores chat<br>
+            Rekruttering og oplæring af frivillige<br>
+            Support og supervision<br>
+            Kommunikation og markedsføring, så flere kender til hjælpen<br>
+          </p>
+        </div>
 
-    <!-- Dekorative stjerner i højre side -->
-    <div class="absolute bottom-0 right-40 flex flex-col space-y-4 pointer-events-none">
-      <img src="/star1.svg" alt="stjerne" class="hidden w-24 md:block md:w-72 animate-wiggle animate-infinite animate-duration-[4500ms]"/>
-    </div>
-  </div>
-</section>
+        <!-- Dekorative stjerner i højre side -->
+        <div class="absolute bottom-0 right-40 flex flex-col space-y-4 pointer-events-none">
+          <img
+            src="/star1.svg"
+            alt="stjerne"
+            class="hidden w-24 md:block md:w-72 animate-wiggle animate-infinite animate-duration-[4500ms]"
+          />
+        </div>
+      </div>
+    </section>
   </main>
 </MainLayout>
 
@@ -130,4 +129,3 @@ import MainLayout from "../layouts/MainLayout.astro";
   document.addEventListener("DOMContentLoaded", init, { once: true });
   document.addEventListener("astro:page-load", init);
 </script>
-

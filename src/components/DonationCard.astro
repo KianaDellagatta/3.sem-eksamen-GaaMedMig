@@ -97,28 +97,28 @@ const accentClass = accent === "beigepink" ? "donation--beigepink" : "donation--
           </>
         )}
 
-{step === "method" && (
-  <>
-    <h4 class="donation__step-title">Betalingsmetode</h4>
+        {step === "method" && (
+          <>
+            <h4 class="donation__step-title">Betalingsmetode</h4>
 
-    <label class="donation__radio">
-      <input class="donation__radio-input" type="radio" name={`${id}-method`} value="mobilepay" />
-      <span class="donation__radio-ui" aria-hidden="true"></span>
-      <span class="donation__radio-text">MobilePay</span>
-    </label>
+            <label class="donation__radio">
+              <input class="donation__radio-input" type="radio" name={`${id}-method`} value="mobilepay" />
+              <span class="donation__radio-ui" aria-hidden="true"></span>
+              <span class="donation__radio-text">MobilePay</span>
+            </label>
 
-    <label class="donation__radio">
-      <input class="donation__radio-input" type="radio" name={`${id}-method`} value="card" />
-      <span class="donation__radio-ui" aria-hidden="true"></span>
-      <span class="donation__radio-text">Kort</span>
-    </label>
+            <label class="donation__radio">
+              <input class="donation__radio-input" type="radio" name={`${id}-method`} value="card" />
+              <span class="donation__radio-ui" aria-hidden="true"></span>
+              <span class="donation__radio-text">Kort</span>
+            </label>
 
-    <div class="donation__nav">
-      <button class="prev hidden donation__nav-btn" type="button">← Tilbage</button>
-      <button class="next donation__nav-btn" type="button">Næste →</button>
-    </div>
-  </>
-)}
+            <div class="donation__nav">
+              <button class="prev hidden donation__nav-btn" type="button">← Tilbage</button>
+              <button class="next donation__nav-btn" type="button">Næste →</button>
+            </div>
+          </>
+        )}
 
         {step === "payment" && (
           <>
@@ -143,26 +143,26 @@ const accentClass = accent === "beigepink" ? "donation--beigepink" : "donation--
           <>
             <h4 class="donation__step-title">Betingelser</h4>
 
-<label class="donation__radio">
-  <input type="checkbox" class="donation__radio-input" />
-  <span class="donation__radio-ui" aria-hidden="true"></span>
-  <span>
-    Opret en konto for at administrere mine donationer og donér hurtigere næste gang.
-  </span>
-</label>
+            <label class="donation__radio">
+              <input type="checkbox" class="donation__radio-input" />
+              <span class="donation__radio-ui" aria-hidden="true"></span>
+              <span>
+                Opret en konto for at administrere mine donationer og donér hurtigere næste gang.
+              </span>
+            </label>
 
-<label class="donation__radio">
-  <input type="checkbox" class="donation__radio-input" />
-  <span class="donation__radio-ui" aria-hidden="true"></span>
-  <span>
-    Denne formular er beskyttet af reCAPTCHA, og Googles privatlivspolitik og servicevilkår gælder.
-  </span>
-</label>
+            <label class="donation__radio">
+              <input type="checkbox" class="donation__radio-input" />
+              <span class="donation__radio-ui" aria-hidden="true"></span>
+              <span>
+                Denne formular er beskyttet af reCAPTCHA, og Googles privatlivspolitik og servicevilkår gælder.
+              </span>
+            </label>
 
-<div class="donation__nav">
-  <button class="prev donation__nav-btn" type="button">← Tilbage</button>
-  <button class="next donation__nav-btn" type="button">Donér</button>
-</div>
+            <div class="donation__nav">
+              <button class="prev donation__nav-btn" type="button">← Tilbage</button>
+              <button class="next donation__nav-btn" type="button">Donér</button>
+            </div>
           </>
         )}
 
@@ -193,7 +193,7 @@ const accentClass = accent === "beigepink" ? "donation--beigepink" : "donation--
         try {
           return JSON.parse(card.dataset.flow || '["amount","info","method","payment","terms","thankyou"]');
         } catch (err) {
-          return ["amount","info","method","payment","terms","thankyou"];
+          return ["amount", "info", "method", "payment", "terms", "thankyou"];
         }
       })();
 

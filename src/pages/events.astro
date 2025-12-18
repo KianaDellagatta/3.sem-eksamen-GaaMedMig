@@ -1,8 +1,8 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import EventCard from "../components/EventCard.astro";
-
 ---
+
 <MainLayout title="Titel">
   <main class="relative">
 
@@ -21,55 +21,56 @@ import EventCard from "../components/EventCard.astro";
       </div>
     </section>
 
-  <!-- Bølgelinje -->
-<img
-  src="/line2.svg"
-  alt="linje"
-  class="md:block absolute top-100 md:top-0 w-full pointer-events-none"
-/>
+    <!-- Bølgelinje -->
+    <img
+      src="/line2.svg"
+      alt="linje"
+      class="md:block absolute top-100 md:top-0 w-full pointer-events-none"
+    />
 
-<!-- Events med mere luft -->
-<section class="section relative z-10 mt-20"> <!-- mt-20 giver afstand fra bølgen -->
-  <div class="container-site">
-    <div class="event-card-list">
-      <EventCard
-        date="5. August"
-        time="12:00"
-        place="Barkowski"
-        title="Aftenvandring i København"
-        description="En aften med musik, drinks og fællesskab, hvor barens overskud støtter hotlinen. Kom, dans og vær med til at skabe tryggere hjemture."
-        descriptionLong="En stemningsfuld aften med musik, kolde drinks og godt selskab, hvor barens overskud går direkte til hotlinen. Kom og dans med os, mød nye mennesker og vær med til at støtte arbejdet for tryggere hjemture."
-      />
+    <!-- Events med mere luft -->
+    <section class="section relative z-10 mt-20">
+      <!-- mt-20 giver afstand fra bølgen -->
+      <div class="container-site">
+        <div class="event-card-list">
+          <EventCard
+            date="5. August"
+            time="12:00"
+            place="Barkowski"
+            title="Aftenvandring i København"
+            description="En aften med musik, drinks og fællesskab, hvor barens overskud støtter hotlinen. Kom, dans og vær med til at skabe tryggere hjemture."
+            descriptionLong="En stemningsfuld aften med musik, kolde drinks og godt selskab, hvor barens overskud går direkte til hotlinen. Kom og dans med os, mød nye mennesker og vær med til at støtte arbejdet for tryggere hjemture."
+          />
 
-      <EventCard
-        date="7. Oktober"
-        time="17:00"
-        place="Parken"
-        title="Tryg Hjem – Fællesvandring"
-        description="En fælles aftenvandring gennem byen, hvor vi synligt går sammen og sætter fokus på tryghed, fællesskab og retten til at færdes sikkert."
-        descriptionLong="Vi går sammen gennem byen i fællesskab og synlighed. Aftenvandringen sætter fokus på tryghed, solidaritet og retten til at kunne færdes frit og sikkert. Alle er velkomne – jo flere vi er, jo stærkere står vi."
-      />
+          <EventCard
+            date="7. Oktober"
+            time="17:00"
+            place="Parken"
+            title="Tryg Hjem – Fællesvandring"
+            description="En fælles aftenvandring gennem byen, hvor vi synligt går sammen og sætter fokus på tryghed, fællesskab og retten til at færdes sikkert."
+            descriptionLong="Vi går sammen gennem byen i fællesskab og synlighed. Aftenvandringen sætter fokus på tryghed, solidaritet og retten til at kunne færdes frit og sikkert. Alle er velkomne – jo flere vi er, jo stærkere står vi."
+          />
 
-      <EventCard
-        date="9. November"
-        time="16:00"
-        place="Kontor"
-        title="Frivillig Fællesskabsaften"
-        description="Et afslappet socialt arrangement for nuværende frivillige og støtter. Fokus på fællesskab, erfaringsdeling og pause."
-        descriptionLong="Et uformelt og hyggeligt arrangement for nuværende frivillige og støtter. Her er der plads til nærvær, erfaringsudveksling og en velfortjent pause. Vi styrker fællesskabet og husker hinanden på, hvorfor vi er med."
-      />
+          <EventCard
+            date="9. November"
+            time="16:00"
+            place="Kontor"
+            title="Frivillig Fællesskabsaften"
+            description="Et afslappet socialt arrangement for nuværende frivillige og støtter. Fokus på fællesskab, erfaringsdeling og pause."
+            descriptionLong="Et uformelt og hyggeligt arrangement for nuværende frivillige og støtter. Her er der plads til nærvær, erfaringsudveksling og en velfortjent pause. Vi styrker fællesskabet og husker hinanden på, hvorfor vi er med."
+          />
 
-      <EventCard
-        date="1. december"
-        time="15:00"
-        place="Kontor"
-        title="Hvem ejer natten?"
-        description="En samtale om tryghed, køn og adgang til det offentlige rum. Et åbent event med oplæg og dialog."
-        descriptionLong="En åben samtale om tryghed, køn og adgang til det offentlige rum. Eventet byder på oplæg og dialog, hvor vi deler perspektiver og erfaringer."
-      />
-    </div>
-  </div>
-</section>
+          <EventCard
+            date="1. december"
+            time="15:00"
+            place="Kontor"
+            title="Hvem ejer natten?"
+            description="En samtale om tryghed, køn og adgang til det offentlige rum. Et åbent event med oplæg og dialog."
+            descriptionLong="En åben samtale om tryghed, køn og adgang til det offentlige rum. Eventet byder på oplæg og dialog, hvor vi deler perspektiver og erfaringer."
+          />
+        </div>
+      </div>
+    </section>
 
     <!-- Stjerne nederst -->
     <img
@@ -80,7 +81,6 @@ import EventCard from "../components/EventCard.astro";
 
   </main>
 </MainLayout>
-
 
 <script>
   // @ts-nocheck

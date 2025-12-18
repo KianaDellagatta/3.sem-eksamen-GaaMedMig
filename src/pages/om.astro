@@ -3,157 +3,146 @@ import MainLayout from "../layouts/MainLayout.astro";
 import IdCard from "../components/IdCard.astro";
 ---
 <MainLayout title="Om os">
-	<main>
-
-		<section class="section">
-			<div class="container-site grid-desktop-text">
-				<div>
-			<h1 data-inview="text" class="t-h2">
-				Hvem er vi?
-			</h1>
-			<p data-inview="text" class="t-p">
-				Vi er et fællesskab af mennesker, der nægter at lade nogen gå alene, når verden føles utryg.
-Vores frivillige står klar med mod, nærvær og en stemme, der skaber ro. Vi tror på, at tryghed vokser, når vi løfter hinanden. Og vi er her for at følge dig hele vejen hjem.
-			</p>
-			</div>
-			<div class="flex justify-center z-10">
-				<img src="/gruppe2.svg" alt="billede af en gruppe piger" />
-			</div>
-		</div>
-		<div class="relative w-full h-80"> <!-- relative container -->
-  <!-- Stjerne 1 -->
-  <img
-    src="/star5.svg"
-    alt="stjerne"
-    class=" md:block absolute top-5 md:top-4 left-20 md:left-25 w-30 md:w-50 pointer-events-none animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear"
-  />
-
-  <!-- Stjerne 2 -->
-  <img
-    src="/star6.svg"
-    alt="stjerne"
-    class="md:block absolute top-90 md:top-100 right-20 md:right-120 w-20 md:w-30 pointer-events-none animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear"
-  />
-
-   <!-- Stjerne 3 -->
-  <img
-    src="/star2.svg"
-    alt="stjerne"
-    class=" hidden md:block absolute -top-95 md:-top-95 right-10 md:right-30 w-45 md:w-60 pointer-events-none animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear"
-  />
-
-    <!-- bølgelinje -->
-  <img
-    src="/line.svg"
-    alt="linje"
-    class="md:block absolute top-20 md:-top-60 w-full pointer-events-none"
-  />
-
-</div>
-		</section>
-
-		<section class="section">
-  <div>
-    <h2 class="t-h2 text-center mb-10">
-      Vores Frivillige
-    </h2>
-  </div>
-
-  <div class="container-site">
-    <!-- Mobile scroll -->
-    <div class="flex gap-4 overflow-x-auto lg:grid lg:grid-cols-4 lg:gap-6 lg:overflow-visible">
-      <IdCard
-        image="/face5.webp"
-        title="Kommunikationschef"
-        name="Maria"
-        age="36"
-        description="Maria har en baggrund i journalistik og brænder for at fortælle historier, der skaber forandring. Hun leder vores kommunikationsteam med fokus på at sprede budskabet om tryghed og fællesskab."
-      />
-      <IdCard
-        image="/face6.webp"
-        title="Strategichef"
-        name="Tonya"
-        age="40"
-        description="Tonya har mange års erfaring med strategisk planlægning og arbejder tæt med ledelsen for at sikre, at vores initiativer effektivt støtter missionen om tryghed i det offentlige rum."
-      />
-      <IdCard
-        image="/face7.webp"
-        title="Leder af rekruttering"
-        name="Janelle"
-        age="35"
-        description="Janelle tiltrækker og engagerer nye frivillige og arbejder for et mangfoldigt og inkluderende fællesskab med passionerede personer, der deler vores vision."
-      />
-      <IdCard
-        image="/face8.webp"
-        title="Indsamlingsteam"
-        name="Charlie"
-        age="27"
-        description="Charlie leder vores indsamlingsarbejde og sikrer ressourcerne til vores mission. Med erfaring i nonprofit-ledelse fokuserer han på relationer og bæredygtig finansiering."
-      />
-      <IdCard
-        image="/face9.webp"
-        title="Serviceleveringsteam"
-        name="Tina"
-        age="25"
-        description="Tina arbejder direkte med dem, vi støtter, og hendes empati og engagement gør hende til en uvurderlig ressource for dem på deres vej mod tryghed."
-      />
-      <IdCard
-        image="/face11.webp"
-        title="Serviceleveringsteam"
-        name="Tom"
-        age="38"
-        description="Tom er en dedikeret frivillig, der skaber trygge og støttende oplevelser for dem, vi hjælper, med en positiv energi, der smitter af på alle."
-      />
-      <IdCard
-        image="/face10.webp"
-        title="Sikkerhed og trivsel"
-        name="Kathrine"
-        age="26"
-        description="Kathrine arbejder med sikkerhed og trivsel og skaber trygge rammer for frivillige og dem, vi hjælper. Hendes baggrund i socialt arbejde gør hende uundværlig."
-      />
-      <IdCard
-        image="/face12.webp"
-        title="Rekrutteringsteam"
-        name="Briana"
-        age="22"
-        description="Briana arbejder i rekruttering og finder passionerede frivillige, der styrker vores mission. Hendes entusiasme og menneskekundskab gør hende værdifuld for organisationen."
-      />
-    </div>
-
-<div class="text-center mt-4 lg:hidden">
-  <img src="/Arrow.svg" alt="Scroll pil" class="mx-auto w-90 h-auto" />
-</div>
-
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container-site">
-    <div class="bg-white rounded-[var(--radius-2)] p-6 lg:p-12 grid gap-6 lg:grid-cols-12 lg:items-center">
-      
-      <!-- Venstre tekst -->
-      <div class="lg:col-span-7">
-        <h2 class="t-h2 text-color-text mb-4">Vil du arbejde med os?</h2>
-        <p class="t-p text-color-text max-w-prose">
-         Som frivillig er du med til at kræve tryghed i det offentlige rum. Din stemme gør en forskel, når nogen har brug for støtte på vejen hjem. Sammen handler vi — i stedet for at kigge væk.
-        </p>
+  <main>
+    <section class="section">
+      <div class="container-site grid-desktop-text">
+        <div>
+          <h1 data-inview="text" class="t-h2">
+            Hvem er vi?
+          </h1>
+          <p data-inview="text" class="t-p">
+            Vi er et fællesskab af mennesker, der nægter at lade nogen gå alene, når verden føles utryg.
+            Vores frivillige står klar med mod, nærvær og en stemme, der skaber ro. Vi tror på, at tryghed vokser, når vi løfter hinanden. Og vi er her for at følge dig hele vejen hjem.
+          </p>
+        </div>
+        <div class="flex justify-center z-10">
+          <img src="/gruppe2.svg" alt="billede af en gruppe piger" />
+        </div>
       </div>
-      
-      <!-- Højre knap -->
-      <div class="lg:col-span-5 flex justify-center lg:justify-end items-center mt-4 lg:mt-0">
-        <a href="/frivillig" class="btn-base btn-grad-1">Bliv en del</a>
+      <div class="relative w-full h-80">
+        <!-- Stjerne 1 -->
+        <img
+          src="/star5.svg"
+          alt="stjerne"
+          class="md:block absolute top-5 md:top-4 left-20 md:left-25 w-30 md:w-50 pointer-events-none animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear"
+        />
+
+        <!-- Stjerne 2 -->
+        <img
+          src="/star6.svg"
+          alt="stjerne"
+          class="md:block absolute top-90 md:top-100 right-20 md:right-120 w-20 md:w-30 pointer-events-none animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear"
+        />
+
+        <!-- Stjerne 3 -->
+        <img
+          src="/star2.svg"
+          alt="stjerne"
+          class="hidden md:block absolute -top-95 md:-top-95 right-10 md:right-30 w-45 md:w-60 pointer-events-none animate-wiggle animate-infinite animate-duration-[5000ms] animate-ease-linear"
+        />
+
+        <!-- bølgelinje -->
+        <img
+          src="/line.svg"
+          alt="linje"
+          class="md:block absolute top-20 md:-top-60 w-full pointer-events-none"
+        />
+      </div>
+    </section>
+
+    <section class="section">
+      <div>
+        <h2 class="t-h2 text-center mb-10">
+          Vores Frivillige
+        </h2>
       </div>
 
-    </div>
-  </div>
-</section>
+      <div class="container-site">
+        <!-- Mobile scroll -->
+        <div class="flex gap-4 overflow-x-auto lg:grid lg:grid-cols-4 lg:gap-6 lg:overflow-visible">
+          <IdCard
+            image="/face5.webp"
+            title="Kommunikationschef"
+            name="Maria"
+            age="36"
+            description="Maria har en baggrund i journalistik og brænder for at fortælle historier, der skaber forandring. Hun leder vores kommunikationsteam med fokus på at sprede budskabet om tryghed og fællesskab."
+          />
+          <IdCard
+            image="/face6.webp"
+            title="Strategichef"
+            name="Tonya"
+            age="40"
+            description="Tonya har mange års erfaring med strategisk planlægning og arbejder tæt med ledelsen for at sikre, at vores initiativer effektivt støtter missionen om tryghed i det offentlige rum."
+          />
+          <IdCard
+            image="/face7.webp"
+            title="Leder af rekruttering"
+            name="Janelle"
+            age="35"
+            description="Janelle tiltrækker og engagerer nye frivillige og arbejder for et mangfoldigt og inkluderende fællesskab med passionerede personer, der deler vores vision."
+          />
+          <IdCard
+            image="/face8.webp"
+            title="Indsamlingsteam"
+            name="Charlie"
+            age="27"
+            description="Charlie leder vores indsamlingsarbejde og sikrer ressourcerne til vores mission. Med erfaring i nonprofit-ledelse fokuserer han på relationer og bæredygtig finansiering."
+          />
+          <IdCard
+            image="/face9.webp"
+            title="Serviceleveringsteam"
+            name="Tina"
+            age="25"
+            description="Tina arbejder direkte med dem, vi støtter, og hendes empati og engagement gør hende til en uvurderlig ressource for dem på deres vej mod tryghed."
+          />
+          <IdCard
+            image="/face11.webp"
+            title="Serviceleveringsteam"
+            name="Tom"
+            age="38"
+            description="Tom er en dedikeret frivillig, der skaber trygge og støttende oplevelser for dem, vi hjælper, med en positiv energi, der smitter af på alle."
+          />
+          <IdCard
+            image="/face10.webp"
+            title="Sikkerhed og trivsel"
+            name="Kathrine"
+            age="26"
+            description="Kathrine arbejder med sikkerhed og trivsel og skaber trygge rammer for frivillige og dem, vi hjælper. Hendes baggrund i socialt arbejde gør hende uundværlig."
+          />
+          <IdCard
+            image="/face12.webp"
+            title="Rekrutteringsteam"
+            name="Briana"
+            age="22"
+            description="Briana arbejder i rekruttering og finder passionerede frivillige, der styrker vores mission. Hendes entusiasme og menneskekundskab gør hende værdifuld for organisationen."
+          />
+        </div>
 
+        <div class="text-center mt-4 lg:hidden">
+          <img src="/Arrow.svg" alt="Scroll pil" class="mx-auto w-90 h-auto" />
+        </div>
+      </div>
+    </section>
 
+    <section class="section">
+      <div class="container-site">
+        <div class="bg-white rounded-[var(--radius-2)] p-6 lg:p-12 grid gap-6 lg:grid-cols-12 lg:items-center">
+          <!-- Venstre tekst -->
+          <div class="lg:col-span-7">
+            <h2 class="t-h2 text-color-text mb-4">Vil du arbejde med os?</h2>
+            <p class="t-p text-color-text max-w-prose">
+              Som frivillig er du med til at kræve tryghed i det offentlige rum. Din stemme gør en forskel, når nogen har brug for støtte på vejen hjem. Sammen handler vi — i stedet for at kigge væk.
+            </p>
+          </div>
 
-
-	</main>
-
+          <!-- Højre knap -->
+          <div class="lg:col-span-5 flex justify-center lg:justify-end items-center mt-4 lg:mt-0">
+            <a href="/frivillig" class="btn-base btn-grad-1">Bliv en del</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </MainLayout>
 
 <script>
